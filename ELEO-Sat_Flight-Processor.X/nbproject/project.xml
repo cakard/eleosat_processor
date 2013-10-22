@@ -3,11 +3,11 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>ELEO-Sat_Flight-Processor</name>
-            <creation-uuid>cd0afbe4-13cb-41a1-80c9-c0c1e0b15c3b</creation-uuid>
+            <creation-uuid>fd17e5a7-f9b6-4f8e-a0b1-1d020538f498</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
-            <header-extensions/>
+            <header-extensions>h</header-extensions>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
         </data>
