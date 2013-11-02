@@ -1,0 +1,11 @@
+_ConfigureOscillator: CODE, 512 0 2
+_main: CODE, 366 0 72
+_BusyADC: CODE, 498 0 6
+_high_isr: CODE, 8 0 266
+_ConvertADC: CODE, 504 0 4
+_InitApp: CODE, 474 0 14
+__initialization: CODE, 438 0 30
+_ReadADC: CODE, 488 0 10
+_OpenADC: CODE, 274 0 92
+_low_isr: CODE, 24 0 138
+Total: 634
