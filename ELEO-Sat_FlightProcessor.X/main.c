@@ -25,9 +25,6 @@
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
 #define _XTAL_FREQ 20000000
-unsigned char config = ADC_FOSC_16 & ADC_2_TAD & ADC_RIGHT_JUST;
-unsigned char config2 = ADC_CH0 & ADC_INT_OFF & ADC_REF_VDD_VSS;
-unsigned char portconfig = ADC_0ANA;
 /* i.e. uint8_t <variable_name>; */
 
 /******************************************************************************/
@@ -43,8 +40,6 @@ void main(void)
     InitApp();
 
     /* TODO <INSERT USER APPLICATION CODE HERE> */
-
-    OpenADC(config, config2, portconfig);
     
     while(1)
     {
