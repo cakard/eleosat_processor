@@ -36,9 +36,13 @@ void InitApp(void)
     TRISB  = 0b00000000;
 
     /* Initialize peripherals */
+    CloseADC();
     OpenADC(ADC_FOSC_16 & ADC_2_TAD & ADC_RIGHT_JUST,
             ADC_CH0 & ADC_INT_OFF & ADC_REF_VDD_VSS,
             ADC_0ANA);
+
+    CloseSPI();
+    OpenSPI(SPI_FOSC_4 & SLV_SSOFF, MODE_01, SMPMID);
 
 
     /* Configure the IPEN bit (1=on) in RCON to turn on/off int priorities */

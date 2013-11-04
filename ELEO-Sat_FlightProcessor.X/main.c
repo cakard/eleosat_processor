@@ -45,14 +45,17 @@ void main(void)
     {
 
 
-        ConvertADC();
-        while(BusyADC());
+        //ConvertADC();
+        //while(BusyADC());
 
-        unsigned int aval = ReadADC();
-        if(aval > 512)
-            PORTB = 0xff;
-        else
-            PORTB = 0x00;
+        //unsigned char aval = (ReadADC() >> 2);
+
+        //while(WriteSPI(aval));
+
+        for(char i=0; i<255; i++) {
+            while(WriteSPI(i));
+            __delay_us(200);
+        }
     }
 
 }

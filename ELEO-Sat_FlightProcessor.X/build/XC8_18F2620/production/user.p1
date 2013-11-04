@@ -5,6 +5,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
 "1415
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"2018 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\adc.h
+[v _CloseADC `(v ~T0 @X0 0 ef ]
+"2042
+[v _OpenADC `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+"4165 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
+[v _SSPCON1 `Vuc ~T0 @X0 0 e@4038 ]
+"586 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\spi.h
+[v _OpenSPI `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 [; ;include\pic18f2620.h: 44: extern volatile unsigned char PORTA @ 0xF80;
 "46 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
 [; ;include\pic18f2620.h: 46: asm("PORTA equ 0F80h");
@@ -3402,7 +3410,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 36: TRISB = 0b00000000;
 "36
 [e = _TRISB -> -> 0 `i `uc ]
-[; ;user.c: 43: }
-"43
+[; ;user.c: 39: CloseADC();
+"39
+[e ( _CloseADC ..  ]
+[; ;user.c: 40: OpenADC(0b11011111 & 0b11110011 & 0b11111111,
+[; ;user.c: 41: 0b10000111 & 0b01111111 & 0b11111100,
+[; ;user.c: 42: 0b11111111);
+"42
+[e ( _OpenADC (3 , , -> & & -> 223 `i -> 243 `i -> 255 `i `uc -> & & -> 135 `i -> 127 `i -> 252 `i `uc -> -> 255 `i `uc ]
+[; ;user.c: 44: (SSPCON1 &=0xDF);
+"44
+[e =& _SSPCON1 -> -> 223 `i `uc ]
+[; ;user.c: 45: OpenSPI(0b00000000 & 0b00000101, 0b00000001, 0b00000000);
+"45
+[e ( _OpenSPI (3 , , -> & -> 0 `i -> 5 `i `uc -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;user.c: 51: }
+"51
 [e :UE 359 ]
 }

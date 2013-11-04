@@ -4558,12 +4558,7 @@ void ConfigureOscillator(void);
 # 14 "user.h"
 void InitApp(void);
 
-# 28 "main.c"
-unsigned char config = 0b11011111 & 0b11110011 & 0b11111111;
-unsigned char config2 = 0b10000111 & 0b01111111 & 0b11111100;
-unsigned char portconfig = 0b11111111;
-
-# 37
+# 34 "main.c"
 void main(void)
 {
 
@@ -4574,20 +4569,14 @@ InitApp();
 
 
 
-OpenADC(config, config2, portconfig);
-
 while(1)
 {
 
-
-ConvertADC();
-while(BusyADC());
-
-unsigned int aval = ReadADC();
-if(aval > 512)
-PORTB = 0xff;
-else
-PORTB = 0x00;
+# 55
+for(char i=0; i<255; i++) {
+while(WriteSPI(i));
+_delay((unsigned long)((200)*(20000000/4000000.0)));
+}
 }
 
 }

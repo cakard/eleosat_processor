@@ -4,16 +4,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ConfigureOscillator `(v ~T0 @X0 0 ef ]
 "14 user.h
 [v _InitApp `(v ~T0 @X0 0 ef ]
-"2042 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\adc.h
-[v _OpenADC `(v ~T0 @X0 0 ef3`uc`uc`uc ]
-"2016
-[v _ConvertADC `(v ~T0 @X0 0 ef ]
-"2014
-[v _BusyADC `(uc ~T0 @X0 0 ef ]
-"2026
-[v _ReadADC `(i ~T0 @X0 0 ef ]
-"182 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"588 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\spi.h
+[v _WriteSPI `(c ~T0 @X0 0 ef1`uc ]
+"144 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18.h
+[v __delay `(v ~T0 @X0 0 ef1`ul ]
+[p i __delay ]
 [; ;include\pic18f2620.h: 44: extern volatile unsigned char PORTA @ 0xF80;
 "46 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
 [; ;include\pic18f2620.h: 46: asm("PORTA equ 0F80h");
@@ -3396,82 +3391,61 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;include\stdbool.h: 12: typedef unsigned char bool;
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;user.h: 14: void InitApp(void);
-"28 main.c
-[v _config `uc ~T0 @X0 1 e ]
-[i _config
--> & & -> 223 `i -> 243 `i -> 255 `i `uc
-]
-[; ;main.c: 28: unsigned char config = 0b11011111 & 0b11110011 & 0b11111111;
-"29
-[v _config2 `uc ~T0 @X0 1 e ]
-[i _config2
--> & & -> 135 `i -> 127 `i -> 252 `i `uc
-]
-[; ;main.c: 29: unsigned char config2 = 0b10000111 & 0b01111111 & 0b11111100;
-"30
-[v _portconfig `uc ~T0 @X0 1 e ]
-[i _portconfig
--> -> 255 `i `uc
-]
-[; ;main.c: 30: unsigned char portconfig = 0b11111111;
-"38
+"35 main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 37: void main(void)
-[; ;main.c: 38: {
+[; ;main.c: 34: void main(void)
+[; ;main.c: 35: {
 [e :U _main ]
 [f ]
-[; ;main.c: 40: ConfigureOscillator();
-"40
+[; ;main.c: 37: ConfigureOscillator();
+"37
 [e ( _ConfigureOscillator ..  ]
-[; ;main.c: 43: InitApp();
-"43
+[; ;main.c: 40: InitApp();
+"40
 [e ( _InitApp ..  ]
-[; ;main.c: 47: OpenADC(config, config2, portconfig);
-"47
-[e ( _OpenADC (3 , , _config _config2 _portconfig ]
-[; ;main.c: 49: while(1)
-"49
+[; ;main.c: 44: while(1)
+"44
 [e :U 361 ]
-[; ;main.c: 50: {
-"50
+[; ;main.c: 45: {
+"45
 {
-[; ;main.c: 53: ConvertADC();
-"53
-[e ( _ConvertADC ..  ]
-[; ;main.c: 54: while(BusyADC());
-"54
-[e $U 363  ]
-[e :U 364 ]
+[; ;main.c: 55: for(char i=0; i<255; i++) {
+"55
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 255 `i 363  ]
+[e $U 364  ]
 [e :U 363 ]
-[e $ != -> ( _BusyADC ..  `i -> -> -> 0 `i `uc `i 364  ]
-[e :U 365 ]
+{
+[; ;main.c: 56: while(WriteSPI(i));
 "56
-[v _aval `ui ~T0 @X0 1 a ]
-[; ;main.c: 56: unsigned int aval = ReadADC();
-[e = _aval -> ( _ReadADC ..  `ui ]
-[; ;main.c: 57: if(aval > 512)
-"57
-[e $ ! > _aval -> -> 512 `i `ui 366  ]
-[; ;main.c: 58: PORTB = 0xff;
-"58
-[e = _PORTB -> -> 255 `i `uc ]
-[e $U 367  ]
-"59
-[e :U 366 ]
-[; ;main.c: 59: else
-[; ;main.c: 60: PORTB = 0x00;
-"60
-[e = _PORTB -> -> 0 `i `uc ]
+[e $U 366  ]
 [e :U 367 ]
-"61
+[e :U 366 ]
+[e $ != -> ( _WriteSPI (1 _i `i -> -> -> 0 `i `c `i 367  ]
+[e :U 368 ]
+[; ;main.c: 57: _delay((unsigned long)((200)*(20000000/4000000.0)));
+"57
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+"58
+}
+"55
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 255 `i 363  ]
+[e :U 364 ]
+"58
+}
+"59
 }
 [e :U 360 ]
-"49
+"44
 [e $U 361  ]
 [e :U 362 ]
+[; ;main.c: 58: }
+[; ;main.c: 59: }
 [; ;main.c: 61: }
-[; ;main.c: 63: }
-"63
+"61
 [e :UE 359 ]
 }

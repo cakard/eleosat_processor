@@ -1,11 +1,11 @@
-_ConfigureOscillator: CODE, 512 0 2
-_main: CODE, 366 0 72
-_BusyADC: CODE, 498 0 6
+_OpenSPI: CODE, 366 0 88
+_CloseADC: CODE, 616 0 6
+_ConfigureOscillator: CODE, 622 0 2
+_main: CODE, 530 0 48
 _high_isr: CODE, 8 0 266
-_ConvertADC: CODE, 504 0 4
-_InitApp: CODE, 474 0 14
-__initialization: CODE, 438 0 30
-_ReadADC: CODE, 488 0 10
+_InitApp: CODE, 454 0 76
+__initialization: CODE, 606 0 0
 _OpenADC: CODE, 274 0 92
+_WriteSPI: CODE, 578 0 28
 _low_isr: CODE, 24 0 138
-Total: 634
+Total: 744
