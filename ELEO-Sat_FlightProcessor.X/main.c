@@ -21,6 +21,7 @@
 #include "system.h"        /* System funct/params, like osc/peripheral config */
 #include "user.h"          /* User funct/params, such as InitApp */
 #include "spi_comm.h"
+#include "xbee.h"
 
 
 /******************************************************************************/
@@ -59,38 +60,11 @@ void main(void)
 
         //while(WriteSPI(aval));
 
-        sendSPI(Power, switch0_on);
-        __delay_us(50);
-        char val = 0x80 & recvSPI(Power);
-        //PORTBbits.RB1 = recvSPI(Power);
-        if(val)
-            PORTBbits.RB1 = 1;
-        __delay_ms(10);
-
-        sendSPI(Power, switch1_on);
-        __delay_us(50);
-        PORTBbits.RB2 = recvSPI(Power);
-        __delay_ms(10);
-
-        sendSPI(Power, switch2_on);
-        __delay_us(50);
-        PORTBbits.RB3 = recvSPI(Power);
-        __delay_ms(10);
-
-        sendSPI(Power, switch2_off);
-        __delay_us(50);
-        PORTBbits.RB3 = recvSPI(Power);
-        __delay_ms(10);
-
-        sendSPI(Power, switch1_off);
-        __delay_us(50);
-        PORTBbits.RB2 = recvSPI(Power);
-        __delay_ms(10);
-
-        sendSPI(Power, switch0_off);
-        __delay_us(50);
-        PORTBbits.RB1 = recvSPI(Power);
-        __delay_ms(10);
+        if(pollRecv)
+        {
+            putsUSART((char *)sendBuff);
+            pollRecv = 0;
+        }
 
     }
 

@@ -4,6 +4,7 @@
 
 #if defined(__XC)
     #include <xc.h>         /* XC8 General Include File */
+    #include <plib.h>
 #elif defined(HI_TECH_C)
     #include <htc.h>        /* HiTech General Include File */
 #elif defined(__18CXX)
@@ -14,6 +15,7 @@
 
 #include <stdint.h>         /* For uint8_t definition */
 #include <stdbool.h>        /* For true/false definition */
+#include "xbee.h"
 
 #endif
 
@@ -40,23 +42,19 @@ void high_isr(void)
       Do not use a seperate if block for each interrupt flag to avoid run
       time errors. */
 
-#if 0
+#if 1
     
       /* TODO Add High Priority interrupt routine code here. */
 
       /* Determine which flag generated the interrupt */
-      if(<Interrupt Flag 1>)
-      {
-          <Interrupt Flag 1=0>; /* Clear Interrupt Flag 1 */
-      }
-      else if (<Interrupt Flag 2>)
-      {
-          <Interrupt Flag 2=0>; /* Clear Interrupt Flag 2 */
-      }
-      else
-      {
-          /* Unhandled interrupts */
-      }
+    if(DataRdyUSART)
+    {
+        getsUSART((char *) recvBuff, 6);
+        if(recvBuff[0] == 0x4E && recvBuff[1] == 0x4E && recvBuff[2] == 0x4E)
+        {
+            pollRecv = 1;
+        }
+    }
 
 #endif
 

@@ -46,6 +46,7 @@ void InitApp(void)
 
     setupSPI();
 
+    initXbee();
 
     /* Configure the IPEN bit (1=on) in RCON to turn on/off int priorities */
 

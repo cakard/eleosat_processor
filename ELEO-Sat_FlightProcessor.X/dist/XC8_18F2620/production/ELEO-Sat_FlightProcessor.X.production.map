@@ -5,7 +5,7 @@ Linker command line:
 --edf=C:\Program Files (x86)\Microchip\xc8\v1.21\dat\en_msgs.txt -cs \
   -h+dist/XC8_18F2620/production\ELEO-Sat_FlightProcessor.X.production.sym \
   --cmf=dist/XC8_18F2620/production\ELEO-Sat_FlightProcessor.X.production.cmf \
-  -z -Q18F2620 -oC:\Users\cakard\AppData\Local\Temp\s5go.6 \
+  -z -Q18F2620 -oC:\Users\cakard\AppData\Local\Temp\sqo.6 \
   -Mdist/XC8_18F2620/production/ELEO-Sat_FlightProcessor.X.production.map \
   -E1 -ver=XC8 -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
   -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE \
-  C:\Users\cakard\AppData\Local\Temp\s5go.obj \
+  C:\Users\cakard\AppData\Local\Temp\sqo.obj \
   dist/XC8_18F2620/production\ELEO-Sat_FlightProcessor.X.production.obj 
 
 Object code version is 3.11
@@ -39,7 +39,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\cakard\AppData\Local\Temp\s5go.obj
+C:\Users\cakard\AppData\Local\Temp\sqo.obj
                 end_init                             A2       A2        4        C       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
@@ -47,20 +47,20 @@ C:\Users\cakard\AppData\Local\Temp\s5go.obj
 dist/XC8_18F2620/production\ELEO-Sat_FlightProcessor.X.production.obj
                 intcodelo                            18       18       8A        C       0
                 intcode                               8        8        C        4       0
-                intcode_body                        25C      25C       6C        C       0
-                text10                              44E      44E        2        C       0
-                text9                               448      448        6        C       0
-                text8                               2C8      2C8       5C        C       0
-                text7                               324      324       58        C       0
-                text6                               3E2      3E2       22        C       0
-                text5                               37C      37C       38        C       0
-                text4                               404      404       1C        C       0
-                text3                               3B4      3B4       2E        C       0
-                text2                               420      420       12        C       0
-                text1                               432      432        C        C       0
-                text0                                A6       A6      1B6        C       0
-                cstackCOMRAM                          1        1       2B        1       1
-                cinit                               43E      43E        A        C       0
+                intcode_body                        284      284       6C        C       0
+                text10                              476      476        2        C       0
+                text9                               470      470        6        C       0
+                text8                               2F0      2F0       5C        C       0
+                text7                               34C      34C       58        C       0
+                text6                               40A      40A       22        C       0
+                text5                               3A4      3A4       38        C       0
+                text4                               42C      42C       1C        C       0
+                text3                               3DC      3DC       2E        C       0
+                text2                               448      448       12        C       0
+                text1                               45A      45A        C        C       0
+                text0                                A6       A6      1DE        C       0
+                cstackCOMRAM                          1        1       2A        1       1
+                cinit                               466      466        A        C       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
@@ -68,19 +68,19 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intcodelo                            18       18       8A         0
                 intcode                               8        8        C         0
                 reset_vec                             0        0        4         0
-                intcode_body                        25C      25C       6C         0
-                text10                              44E      44E        2         0
-                text9                               448      448        6         0
-                text8                               2C8      2C8       5C         0
-                text7                               324      324       58         0
-                text6                               3E2      3E2       22         0
-                text5                               37C      37C       38         0
-                text4                               404      404       1C         0
-                text3                               3B4      3B4       2E         0
-                text2                               420      420       12         0
-                text1                               432      432        C         0
-                text0                                A6       A6      1B6         0
-                cinit                               43E      43E        A         0
+                intcode_body                        284      284       6C         0
+                text10                              476      476        2         0
+                text9                               470      470        6         0
+                text8                               2F0      2F0       5C         0
+                text7                               34C      34C       58         0
+                text6                               40A      40A       22         0
+                text5                               3A4      3A4       38         0
+                text4                               42C      42C       1C         0
+                text3                               3DC      3DC       2E         0
+                text2                               448      448       12         0
+                text1                               45A      45A        C         0
+                text0                                A6       A6      1DE         0
+                cinit                               466      466        A         0
 
         CLASS   CONST          
 
@@ -89,7 +89,7 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                cstackCOMRAM                          1        1       2B         1
+                cstackCOMRAM                          1        1       2A         1
 
         CLASS   ABS1           
 
@@ -146,9 +146,9 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  00002B  00002C         1       1  COMRAM  
+                cstackCOMRAM                   000001  00002A  00002B         1       1  COMRAM  
                 intcode                        000008  00000C  000014         4       0  CODE    
-                intcodelo                      000018  000438  000450         C       0  CODE    
+                intcodelo                      000018  000460  000478         C       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -172,14 +172,14 @@ UNUSED ADDRESS RANGES
         BANK7            000700-0007FF              100
         BANK8            000800-0008FF              100
         BANK9            000900-0009FF              100
-        BIGRAM           00002C-000F7F              F54
+        BIGRAM           00002B-000F7F              F55
         CODE             000004-000007                4
                          000014-000017                4
-                         000450-00FFFF             FBB0
-        COMRAM           00002C-00007F               54
+                         000478-00FFFF             FB88
+        COMRAM           00002B-00007F               55
         CONST            000004-000007                4
                          000014-000017                4
-                         000450-00FFFF             FBB0
+                         000478-00FFFF             FB88
         EEDATA           F00000-F003FF              400
         MEDIUMCONST      001000-00FFFF             F000
         RAM              000080-000F7F              100
@@ -206,17 +206,17 @@ _ADCON0                       (abs)        000FC2
 _ADCON0bits                   (abs)        000FC2
 _ADCON1                       (abs)        000FC1
 _ADCON2                       (abs)        000FC0
-_CloseADC                     text9        000448
-_ConfigureOscillator          text10       00044E
+_CloseADC                     text9        000470
+_ConfigureOscillator          text10       000476
 _INTCONbits                   (abs)        000FF2
-_InitApp                      text5        00037C
-_OpenADC                      text8        0002C8
-_OpenSPI                      text7        000324
+_InitApp                      text5        0003A4
+_OpenADC                      text8        0002F0
+_OpenSPI                      text7        00034C
 _PIE1bits                     (abs)        000F9D
 _PIR1bits                     (abs)        000F9E
 _PORTB                        (abs)        000F81
 _PORTBbits                    (abs)        000F81
-_ReadSPI                      text2        000420
+_ReadSPI                      text2        000448
 _SSPBUF                       (abs)        000FC9
 _SSPCON1                      (abs)        000FC6
 _SSPCON1bits                  (abs)        000FC6
@@ -226,7 +226,7 @@ _TRISA                        (abs)        000F92
 _TRISAbits                    (abs)        000F92
 _TRISB                        (abs)        000F93
 _TRISCbits                    (abs)        000F94
-_WriteSPI                     text4        000404
+_WriteSPI                     text4        00042C
 __CFG_BOREN$SBORDIS           (abs)        000000
 __CFG_BORV$3                  (abs)        000000
 __CFG_CCP2MX$PORTC            (abs)        000000
@@ -409,41 +409,41 @@ __Ltext7                      text7        000000
 __Ltext8                      text8        000000
 __Ltext9                      text9        000000
 __S0                          (abs)        30000E
-__S1                          (abs)        00002C
+__S1                          (abs)        00002B
 __accesstop                   (abs)        000080
 __activetblptr                (abs)        000002
-__end_of_CloseADC             text9        00044E
-__end_of_ConfigureOscillator  text10       000450
-__end_of_InitApp              text5        0003B4
-__end_of_OpenADC              text8        000324
-__end_of_OpenSPI              text7        00037C
-__end_of_ReadSPI              text2        000432
-__end_of_WriteSPI             text4        000420
-__end_of__initialization      cinit        00043E
-__end_of_high_isr             intcode_body 0002C8
+__end_of_CloseADC             text9        000476
+__end_of_ConfigureOscillator  text10       000478
+__end_of_InitApp              text5        0003DC
+__end_of_OpenADC              text8        00034C
+__end_of_OpenSPI              text7        0003A4
+__end_of_ReadSPI              text2        00045A
+__end_of_WriteSPI             text4        000448
+__end_of__initialization      cinit        000466
+__end_of_high_isr             intcode_body 0002F0
 __end_of_low_isr              intcodelo    0000A2
-__end_of_main                 text0        00025C
-__end_of_recvSPI              text1        00043E
-__end_of_sendSPI              text3        0003E2
-__end_of_setupSPI             text6        000404
-__initialization              cinit        00043E
+__end_of_main                 text0        000284
+__end_of_recvSPI              text1        000466
+__end_of_sendSPI              text3        00040A
+__end_of_setupSPI             text6        00042C
+__initialization              cinit        000466
 __mediumconst                 mediumconst  000000
-__pcinit                      cinit        00043E
+__pcinit                      cinit        000466
 __pcstackCOMRAM               cstackCOMRAM 000001
 __pintcode                    intcode      000008
-__pintcode_body               intcode_body 00025C
+__pintcode_body               intcode_body 000284
 __pintcodelo                  intcodelo    000018
 __ptext0                      text0        0000A6
-__ptext1                      text1        000432
-__ptext10                     text10       00044E
-__ptext2                      text2        000420
-__ptext3                      text3        0003B4
-__ptext4                      text4        000404
-__ptext5                      text5        00037C
-__ptext6                      text6        0003E2
-__ptext7                      text7        000324
-__ptext8                      text8        0002C8
-__ptext9                      text9        000448
+__ptext1                      text1        00045A
+__ptext10                     text10       000476
+__ptext2                      text2        000448
+__ptext3                      text3        0003DC
+__ptext4                      text4        00042C
+__ptext5                      text5        0003A4
+__ptext6                      text6        00040A
+__ptext7                      text7        00034C
+__ptext8                      text8        0002F0
+__ptext9                      text9        000470
 __ramtop                      ramtop       001000
 __size_of_CloseADC            (abs)        000000
 __size_of_ConfigureOscillator (abs)        000000
@@ -462,21 +462,20 @@ __smallconst                  smallconst   000000
 _high_isr                     intcode      000008
 _low_isr                      intcodelo    000018
 _main                         text0        0000A6
-_recvSPI                      text1        000432
-_sendSPI                      text3        0003B4
-_setupSPI                     text6        0003E2
-end_of_initialization         cinit        00043E
-int_func                      intcode_body 00025C
+_recvSPI                      text1        00045A
+_sendSPI                      text3        0003DC
+_setupSPI                     text6        00040A
+end_of_initialization         cinit        000466
+int_func                      intcode_body 000284
 intlevel0                     text         000000
 intlevel1                     text         000000
 intlevel2                     text         000000
 intlevel3                     text         000000
-main@val                      cstackCOMRAM 00002B
 sendSPI@command               cstackCOMRAM 000023
 sendSPI@retval                cstackCOMRAM 000025
 sendSPI@slave                 cstackCOMRAM 000022
 start                         init         0000A2
-start_initialization          cinit        00043E
+start_initialization          cinit        000466
 
 
 FUNCTION INFORMATION:
@@ -487,7 +486,7 @@ FUNCTION INFORMATION:
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  val             1   42[COMRAM] unsigned char 
+		None
  Return value:  Size  Location     Type
 		None               void
  Registers used:
@@ -498,10 +497,10 @@ FUNCTION INFORMATION:
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
       Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
       Temps:          2       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-Total ram usage:        3 bytes
+      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
  Hardware stack levels required when called:    5
  This function calls:
 		_ConfigureOscillator
@@ -884,60 +883,60 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_writ.c
-		_WriteSPI      		CODE           	0404	0000	28
+		_WriteSPI      		CODE           	042C	0000	28
 
 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_writ.c estimated size: 28
 
 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_read.c
-		_ReadSPI       		CODE           	0420	0000	18
+		_ReadSPI       		CODE           	0448	0000	18
 
 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_read.c estimated size: 18
 
 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcopen.c
-		_OpenADC       		CODE           	02C8	0000	92
+		_OpenADC       		CODE           	02F0	0000	92
 
 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcopen.c estimated size: 92
 
 shared
-		__initializatio		CODE           	043E	0000	0
+		__initializatio		CODE           	0466	0000	0
 
 shared estimated size: 0
 
 main.c
-		_main          		CODE           	00A6	0000	438
+		_main          		CODE           	00A6	0000	478
 
-main.c estimated size: 438
+main.c estimated size: 478
 
 system.c
-		_ConfigureOscil		CODE           	044E	0000	2
+		_ConfigureOscil		CODE           	0476	0000	2
 
 system.c estimated size: 2
 
 interrupts.c
-		_high_isr      		CODE           	0008	0000	704
+		_high_isr      		CODE           	0008	0000	744
 		_low_isr       		CODE           	0018	0000	138
 
-interrupts.c estimated size: 842
+interrupts.c estimated size: 882
 
 spi_comm.c
-		_setupSPI      		CODE           	03E2	0000	34
-		_sendSPI       		CODE           	03B4	0000	46
-		_recvSPI       		CODE           	0432	0000	12
+		_setupSPI      		CODE           	040A	0000	34
+		_sendSPI       		CODE           	03DC	0000	46
+		_recvSPI       		CODE           	045A	0000	12
 
 spi_comm.c estimated size: 92
 
 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_open.c
-		_OpenSPI       		CODE           	0324	0000	88
+		_OpenSPI       		CODE           	034C	0000	88
 
 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_open.c estimated size: 88
 
 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcclose.c
-		_CloseADC      		CODE           	0448	0000	6
+		_CloseADC      		CODE           	0470	0000	6
 
 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcclose.c estimated size: 6
 
 user.c
-		_InitApp       		CODE           	037C	0000	56
+		_InitApp       		CODE           	03A4	0000	56
 
 user.c estimated size: 56
 
