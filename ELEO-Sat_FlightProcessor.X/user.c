@@ -4,6 +4,7 @@
 
 #if defined(__XC)
     #include <xc.h>         /* XC8 General Include File */
+    #include "plib.h"       /* XC8 Peripheral Libraries */
 #elif defined(HI_TECH_C)
     #include <htc.h>        /* HiTech General Include File */
 #elif defined(__18CXX)
@@ -18,7 +19,7 @@
 #endif
 
 #include "user.h"
-#include "plib.h"
+#include "spi_comm.h"
 
 /******************************************************************************/
 /* User Functions                                                             */
@@ -34,6 +35,8 @@ void InitApp(void)
     ADCON1 = 0b00001010;
     TRISA  = 0b00000001;
     TRISB  = 0b00000000;
+    PORTB = 0x00;
+    PORTBbits.RB0 = 1;
 
     /* Initialize peripherals */
     CloseADC();
@@ -41,11 +44,14 @@ void InitApp(void)
             ADC_CH0 & ADC_INT_OFF & ADC_REF_VDD_VSS,
             ADC_0ANA);
 
-    CloseSPI();
-    OpenSPI(SPI_FOSC_4 & SLV_SSOFF, MODE_01, SMPMID);
+    setupSPI();
 
 
     /* Configure the IPEN bit (1=on) in RCON to turn on/off int priorities */
 
     /* Enable interrupts */
+    //di(); // disable interrupts
+    //RCONbits.IPEN = 0; // disable priority interrupts
+
+
 }

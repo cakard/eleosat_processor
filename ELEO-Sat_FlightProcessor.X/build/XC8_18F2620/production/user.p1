@@ -5,14 +5,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
 "1415
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"182
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"188
+[s S12 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S12 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"198
+[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S13 . INT0 INT1 INT2 CCP2 KBI0 KBI1 KBI2 KBI3 ]
+"208
+[s S14 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S14 . AN12 AN10 AN8 AN9 AN11 PGM PGC PGD ]
+"218
+[s S15 :3 `uc 1 :1 `uc 1 ]
+[n S15 . . CCP2_PA2 ]
+"187
+[u S11 `S12 1 `S13 1 `S14 1 `S15 1 ]
+[n S11 . . . . . ]
+"223
+[v _PORTBbits `VS11 ~T0 @X0 0 e@3969 ]
 "2018 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\adc.h
 [v _CloseADC `(v ~T0 @X0 0 ef ]
 "2042
 [v _OpenADC `(v ~T0 @X0 0 ef3`uc`uc`uc ]
-"4165 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
-[v _SSPCON1 `Vuc ~T0 @X0 0 e@4038 ]
-"586 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\spi.h
-[v _OpenSPI `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+"33 spi_comm.h
+[v _setupSPI `(v ~T0 @X0 0 ef ]
 [; ;include\pic18f2620.h: 44: extern volatile unsigned char PORTA @ 0xF80;
 "46 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
 [; ;include\pic18f2620.h: 46: asm("PORTA equ 0F80h");
@@ -3394,37 +3411,59 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;include\stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;include\stdbool.h: 12: typedef unsigned char bool;
 [; ;user.h: 14: void InitApp(void);
-"30 user.c
+[; ;spi_comm.h: 15: typedef enum {
+[; ;spi_comm.h: 16: Power,
+[; ;spi_comm.h: 17: Instrument,
+[; ;spi_comm.h: 18: Communication
+[; ;spi_comm.h: 19: } Slaves;
+[; ;spi_comm.h: 21: typedef enum {
+[; ;spi_comm.h: 22: null = 0x00,
+[; ;spi_comm.h: 23: switch0_on = 0x01,
+[; ;spi_comm.h: 24: switch0_off = 0x02,
+[; ;spi_comm.h: 25: switch1_on = 0x03,
+[; ;spi_comm.h: 26: switch1_off = 0x04,
+[; ;spi_comm.h: 27: switch2_on = 0x05,
+[; ;spi_comm.h: 28: switch2_off = 0x06,
+[; ;spi_comm.h: 29: switch3_on = 0x07,
+[; ;spi_comm.h: 30: switch3_off = 0x08
+[; ;spi_comm.h: 31: } Commands;
+[; ;spi_comm.h: 33: void setupSPI();
+[; ;spi_comm.h: 34: void sendSPI(Slaves slave, Commands command);
+[; ;spi_comm.h: 35: char recvSPI(Slaves slave);
+"31 user.c
 [v _InitApp `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 29: void InitApp(void)
-[; ;user.c: 30: {
+[; ;user.c: 30: void InitApp(void)
+[; ;user.c: 31: {
 [e :U _InitApp ]
 [f ]
-[; ;user.c: 34: ADCON1 = 0b00001010;
-"34
-[e = _ADCON1 -> -> 10 `i `uc ]
-[; ;user.c: 35: TRISA = 0b00000001;
+[; ;user.c: 35: ADCON1 = 0b00001010;
 "35
-[e = _TRISA -> -> 1 `i `uc ]
-[; ;user.c: 36: TRISB = 0b00000000;
+[e = _ADCON1 -> -> 10 `i `uc ]
+[; ;user.c: 36: TRISA = 0b00000001;
 "36
+[e = _TRISA -> -> 1 `i `uc ]
+[; ;user.c: 37: TRISB = 0b00000000;
+"37
 [e = _TRISB -> -> 0 `i `uc ]
-[; ;user.c: 39: CloseADC();
+[; ;user.c: 38: PORTB = 0x00;
+"38
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;user.c: 39: PORTBbits.RB0 = 1;
 "39
-[e ( _CloseADC ..  ]
-[; ;user.c: 40: OpenADC(0b11011111 & 0b11110011 & 0b11111111,
-[; ;user.c: 41: 0b10000111 & 0b01111111 & 0b11111100,
-[; ;user.c: 42: 0b11111111);
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+[; ;user.c: 42: CloseADC();
 "42
-[e ( _OpenADC (3 , , -> & & -> 223 `i -> 243 `i -> 255 `i `uc -> & & -> 135 `i -> 127 `i -> 252 `i `uc -> -> 255 `i `uc ]
-[; ;user.c: 44: (SSPCON1 &=0xDF);
-"44
-[e =& _SSPCON1 -> -> 223 `i `uc ]
-[; ;user.c: 45: OpenSPI(0b00000000 & 0b00000101, 0b00000001, 0b00000000);
+[e ( _CloseADC ..  ]
+[; ;user.c: 43: OpenADC(0b11011111 & 0b11110011 & 0b11111111,
+[; ;user.c: 44: 0b10000111 & 0b01111111 & 0b11111100,
+[; ;user.c: 45: 0b11111111);
 "45
-[e ( _OpenSPI (3 , , -> & -> 0 `i -> 5 `i `uc -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;user.c: 51: }
-"51
+[e ( _OpenADC (3 , , -> & & -> 223 `i -> 243 `i -> 255 `i `uc -> & & -> 135 `i -> 127 `i -> 252 `i `uc -> -> 255 `i `uc ]
+[; ;user.c: 47: setupSPI();
+"47
+[e ( _setupSPI ..  ]
+[; ;user.c: 57: }
+"57
 [e :UE 359 ]
 }

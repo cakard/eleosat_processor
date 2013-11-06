@@ -1,5 +1,5 @@
 
-# 1 "user.c"
+# 1 "spi_comm.c"
 
 # 44 "C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h"
 extern volatile unsigned char PORTA @ 0xF80;
@@ -4552,9 +4552,6 @@ typedef uint16_t uintptr_t;
 # 12 "C:/Program Files (x86)/Microchip/xc8/v1.21/include\stdbool.h"
 typedef unsigned char bool;
 
-# 14 "user.h"
-void InitApp(void);
-
 # 15 "spi_comm.h"
 typedef enum {
 Power,
@@ -4578,25 +4575,45 @@ void setupSPI();
 void sendSPI(Slaves slave, Commands command);
 char recvSPI(Slaves slave);
 
-# 30 "user.c"
-void InitApp(void)
+# 26 "spi_comm.c"
+void setupSPI()
 {
+(PORTBbits.RB0 = 1);
+(SSPCON1 &=0xDF);
+OpenSPI(0b00000000 & 0b00000101, 0b00000001, 0b00000000);
+}
+
+# 41
+void sendSPI(Slaves slave, Commands command)
+{
+char retval = 0x00;
+
+switch(slave)
+{
+case Power:
 
 
-
-ADCON1 = 0b00001010;
-TRISA = 0b00000001;
-TRISB = 0b00000000;
-PORTB = 0x00;
-PORTBbits.RB0 = 1;
-
-
-CloseADC();
-OpenADC(0b11011111 & 0b11110011 & 0b11111111,
-0b10000111 & 0b01111111 & 0b11111100,
-0b11111111);
-
-setupSPI();
+(PORTBbits.RB0 = 0);
+while(WriteSPI(command));
 
 # 57
+(PORTBbits.RB0 = 1);
+break;
+case Instrument:
+break;
+case Communication:
+break;
+}
+
+
+}
+
+char recvSPI(Slaves slave)
+{
+(PORTBbits.RB0 = 0);
+
+
+ReadSPI();
+(PORTBbits.RB0 = 1);
+return SSPBUF;
 }

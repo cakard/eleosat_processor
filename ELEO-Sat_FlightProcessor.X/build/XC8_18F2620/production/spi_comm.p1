@@ -1,21 +1,4 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[p mainexit ]
-"19 system.h
-[v _ConfigureOscillator `(v ~T0 @X0 0 ef ]
-"14 user.h
-[v _InitApp `(v ~T0 @X0 0 ef ]
-"62 main.c
-[c E3678 0 1 2 .. ]
-[n E3678 . Power Instrument Communication  ]
-[c E3683 0 1 2 3 4 5 6 7 8 .. ]
-[n E3683 . null switch0_on switch0_off switch1_on switch1_off switch2_on switch2_off switch3_on switch3_off  ]
-"34 spi_comm.h
-[v _sendSPI `(v ~T0 @X0 0 ef2`E3678`E3683 ]
-"144 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18.h
-[v __delay `(v ~T0 @X0 0 ef1`ul ]
-[p i __delay ]
-"35 spi_comm.h
-[v _recvSPI `(uc ~T0 @X0 0 ef1`E3678 ]
 "188 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
 [s S12 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S12 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
@@ -33,6 +16,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S11 . . . . . ]
 "223
 [v _PORTBbits `VS11 ~T0 @X0 0 e@3969 ]
+"4165
+[v _SSPCON1 `Vuc ~T0 @X0 0 e@4038 ]
+"586 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\spi.h
+[v _OpenSPI `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+"42 spi_comm.c
+[c E3674 0 1 2 .. ]
+[n E3674 . Power Instrument Communication  ]
+[c E3679 0 1 2 3 4 5 6 7 8 .. ]
+[n E3679 . null switch0_on switch0_off switch1_on switch1_off switch2_on switch2_off switch3_on switch3_off  ]
+"588 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\spi.h
+[v _WriteSPI `(c ~T0 @X0 0 ef1`uc ]
+"594
+[v _ReadSPI `(uc ~T0 @X0 0 ef ]
+"4479 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
+[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
 [; ;include\pic18f2620.h: 44: extern volatile unsigned char PORTA @ 0xF80;
 "46 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
 [; ;include\pic18f2620.h: 46: asm("PORTA equ 0F80h");
@@ -3413,8 +3411,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;include\stdint.h: 210: typedef int16_t intptr_t;
 [; ;include\stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;include\stdbool.h: 12: typedef unsigned char bool;
-[; ;system.h: 19: void ConfigureOscillator(void);
-[; ;user.h: 14: void InitApp(void);
 [; ;spi_comm.h: 15: typedef enum {
 [; ;spi_comm.h: 16: Power,
 [; ;spi_comm.h: 17: Instrument,
@@ -3434,113 +3430,114 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;spi_comm.h: 33: void setupSPI();
 [; ;spi_comm.h: 34: void sendSPI(Slaves slave, Commands command);
 [; ;spi_comm.h: 35: char recvSPI(Slaves slave);
-"37 main.c
-[v _main `(v ~T0 @X0 1 ef ]
+"27 spi_comm.c
+[v _setupSPI `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 36: void main(void)
-[; ;main.c: 37: {
-[e :U _main ]
+[; ;spi_comm.c: 26: void setupSPI()
+[; ;spi_comm.c: 27: {
+[e :U _setupSPI ]
 [f ]
-[; ;main.c: 39: ConfigureOscillator();
-"39
-[e ( _ConfigureOscillator ..  ]
-[; ;main.c: 42: InitApp();
-"42
-[e ( _InitApp ..  ]
-[; ;main.c: 51: while(1)
-"51
-[e :U 361 ]
-[; ;main.c: 52: {
-"52
-{
-[; ;main.c: 62: sendSPI(Power, switch0_on);
-"62
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 1 `E3683 ]
-[; ;main.c: 63: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"63
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-"64
-[v _val `uc ~T0 @X0 1 a ]
-[; ;main.c: 64: char val = 0x80 & recvSPI(Power);
-[e = _val -> & -> 128 `i -> ( _recvSPI (1 -> . `E3678 0 `E3678 `i `uc ]
-[; ;main.c: 66: if(val)
-"66
-[e $ ! != -> _val `i -> -> -> 0 `i `uc `i 363  ]
-[; ;main.c: 67: PORTBbits.RB1 = 1;
-"67
-[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
-[e :U 363 ]
-[; ;main.c: 68: _delay((unsigned long)((10)*(20000000/4000.0)));
-"68
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 70: sendSPI(Power, switch1_on);
-"70
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 3 `E3683 ]
-[; ;main.c: 71: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"71
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 72: PORTBbits.RB2 = recvSPI(Power);
-"72
-[e = . . _PORTBbits 0 2 ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 73: _delay((unsigned long)((10)*(20000000/4000.0)));
-"73
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 75: sendSPI(Power, switch2_on);
-"75
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 5 `E3683 ]
-[; ;main.c: 76: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"76
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 77: PORTBbits.RB3 = recvSPI(Power);
-"77
-[e = . . _PORTBbits 0 3 ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 78: _delay((unsigned long)((10)*(20000000/4000.0)));
-"78
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 80: sendSPI(Power, switch2_off);
-"80
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 6 `E3683 ]
-[; ;main.c: 81: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"81
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 82: PORTBbits.RB3 = recvSPI(Power);
-"82
-[e = . . _PORTBbits 0 3 ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 83: _delay((unsigned long)((10)*(20000000/4000.0)));
-"83
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 85: sendSPI(Power, switch1_off);
-"85
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 4 `E3683 ]
-[; ;main.c: 86: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"86
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 87: PORTBbits.RB2 = recvSPI(Power);
-"87
-[e = . . _PORTBbits 0 2 ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 88: _delay((unsigned long)((10)*(20000000/4000.0)));
-"88
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 90: sendSPI(Power, switch0_off);
-"90
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 2 `E3683 ]
-[; ;main.c: 91: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"91
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 92: PORTBbits.RB1 = recvSPI(Power);
-"92
-[e = . . _PORTBbits 0 1 ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 93: _delay((unsigned long)((10)*(20000000/4000.0)));
-"93
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"95
-}
-[e :U 360 ]
-"51
-[e $U 361  ]
-[e :U 362 ]
-[; ;main.c: 95: }
-[; ;main.c: 97: }
-"97
+[; ;spi_comm.c: 28: (PORTBbits.RB0 = 1);
+"28
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+[; ;spi_comm.c: 29: (SSPCON1 &=0xDF);
+"29
+[e =& _SSPCON1 -> -> 223 `i `uc ]
+[; ;spi_comm.c: 30: OpenSPI(0b00000000 & 0b00000101, 0b00000001, 0b00000000);
+"30
+[e ( _OpenSPI (3 , , -> & -> 0 `i -> 5 `i `uc -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;spi_comm.c: 31: }
+"31
 [e :UE 359 ]
+}
+"42
+[v _sendSPI `(v ~T0 @X0 1 ef2`E3674`E3679 ]
+{
+[; ;spi_comm.c: 41: void sendSPI(Slaves slave, Commands command)
+[; ;spi_comm.c: 42: {
+[e :U _sendSPI ]
+[v _slave `E3674 ~T0 @X0 1 r1 ]
+[v _command `E3679 ~T0 @X0 1 r2 ]
+[f ]
+"43
+[v _retval `uc ~T0 @X0 1 a ]
+[; ;spi_comm.c: 43: char retval = 0x00;
+[e = _retval -> -> 0 `i `uc ]
+[; ;spi_comm.c: 45: switch(slave)
+"45
+[e $U 362  ]
+[; ;spi_comm.c: 46: {
+"46
+{
+[; ;spi_comm.c: 47: case Power:
+"47
+[e :U 363 ]
+[; ;spi_comm.c: 50: (PORTBbits.RB0 = 0);
+"50
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+[; ;spi_comm.c: 51: while(WriteSPI(command));
+"51
+[e $U 364  ]
+[e :U 365 ]
+[e :U 364 ]
+[e $ != -> ( _WriteSPI (1 -> _command `uc `i -> -> -> 0 `i `c `i 365  ]
+[e :U 366 ]
+[; ;spi_comm.c: 57: (PORTBbits.RB0 = 1);
+"57
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+[; ;spi_comm.c: 58: break;
+"58
+[e $U 361  ]
+[; ;spi_comm.c: 59: case Instrument:
+"59
+[e :U 367 ]
+[; ;spi_comm.c: 60: break;
+"60
+[e $U 361  ]
+[; ;spi_comm.c: 61: case Communication:
+"61
+[e :U 368 ]
+[; ;spi_comm.c: 62: break;
+"62
+[e $U 361  ]
+"63
+}
+[; ;spi_comm.c: 63: }
+[e $U 361  ]
+"45
+[e :U 362 ]
+[e [\ _slave , $ -> . `E3674 0 `E3674 363
+ , $ -> . `E3674 1 `E3674 367
+ , $ -> . `E3674 2 `E3674 368
+ 361 ]
+"63
+[e :U 361 ]
+[; ;spi_comm.c: 66: }
+"66
+[e :UE 360 ]
+}
+"69
+[v _recvSPI `(uc ~T0 @X0 1 ef1`E3674 ]
+{
+[; ;spi_comm.c: 68: char recvSPI(Slaves slave)
+[; ;spi_comm.c: 69: {
+[e :U _recvSPI ]
+[v _slave `E3674 ~T0 @X0 1 r1 ]
+[f ]
+[; ;spi_comm.c: 70: (PORTBbits.RB0 = 0);
+"70
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+[; ;spi_comm.c: 73: ReadSPI();
+"73
+[e ( _ReadSPI ..  ]
+[; ;spi_comm.c: 74: (PORTBbits.RB0 = 1);
+"74
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+[; ;spi_comm.c: 75: return SSPBUF;
+"75
+[e ) _SSPBUF ]
+[e $UE 369  ]
+[; ;spi_comm.c: 76: }
+"76
+[e :UE 369 ]
 }

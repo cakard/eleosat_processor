@@ -4558,7 +4558,30 @@ void ConfigureOscillator(void);
 # 14 "user.h"
 void InitApp(void);
 
-# 34 "main.c"
+# 15 "spi_comm.h"
+typedef enum {
+Power,
+Instrument,
+Communication
+} Slaves;
+
+typedef enum {
+null = 0x00,
+switch0_on = 0x01,
+switch0_off = 0x02,
+switch1_on = 0x03,
+switch1_off = 0x04,
+switch2_on = 0x05,
+switch2_off = 0x06,
+switch3_on = 0x07,
+switch3_off = 0x08
+} Commands;
+
+void setupSPI();
+void sendSPI(Slaves slave, Commands command);
+char recvSPI(Slaves slave);
+
+# 36 "main.c"
 void main(void)
 {
 
@@ -4567,16 +4590,44 @@ ConfigureOscillator();
 
 InitApp();
 
-
-
+# 51
 while(1)
 {
 
-# 55
-for(char i=0; i<255; i++) {
-while(WriteSPI(i));
-_delay((unsigned long)((200)*(20000000/4000000.0)));
-}
+# 62
+sendSPI(Power, switch0_on);
+_delay((unsigned long)((50)*(20000000/4000000.0)));
+char val = 0x80 & recvSPI(Power);
+
+if(val)
+PORTBbits.RB1 = 1;
+_delay((unsigned long)((10)*(20000000/4000.0)));
+
+sendSPI(Power, switch1_on);
+_delay((unsigned long)((50)*(20000000/4000000.0)));
+PORTBbits.RB2 = recvSPI(Power);
+_delay((unsigned long)((10)*(20000000/4000.0)));
+
+sendSPI(Power, switch2_on);
+_delay((unsigned long)((50)*(20000000/4000000.0)));
+PORTBbits.RB3 = recvSPI(Power);
+_delay((unsigned long)((10)*(20000000/4000.0)));
+
+sendSPI(Power, switch2_off);
+_delay((unsigned long)((50)*(20000000/4000000.0)));
+PORTBbits.RB3 = recvSPI(Power);
+_delay((unsigned long)((10)*(20000000/4000.0)));
+
+sendSPI(Power, switch1_off);
+_delay((unsigned long)((50)*(20000000/4000000.0)));
+PORTBbits.RB2 = recvSPI(Power);
+_delay((unsigned long)((10)*(20000000/4000.0)));
+
+sendSPI(Power, switch0_off);
+_delay((unsigned long)((50)*(20000000/4000000.0)));
+PORTBbits.RB1 = recvSPI(Power);
+_delay((unsigned long)((10)*(20000000/4000.0)));
+
 }
 
 }

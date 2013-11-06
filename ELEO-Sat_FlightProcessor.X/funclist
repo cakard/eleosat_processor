@@ -1,11 +1,15 @@
-_OpenSPI: CODE, 366 0 88
-_CloseADC: CODE, 616 0 6
-_ConfigureOscillator: CODE, 622 0 2
-_main: CODE, 530 0 48
-_high_isr: CODE, 8 0 266
-_InitApp: CODE, 454 0 76
-__initialization: CODE, 606 0 0
-_OpenADC: CODE, 274 0 92
-_WriteSPI: CODE, 578 0 28
+_OpenSPI: CODE, 804 0 88
+_CloseADC: CODE, 1096 0 6
+_ConfigureOscillator: CODE, 1102 0 2
+_main: CODE, 166 0 438
+_setupSPI: CODE, 994 0 34
+_high_isr: CODE, 8 0 704
+_InitApp: CODE, 892 0 56
+__initialization: CODE, 1086 0 0
+_OpenADC: CODE, 712 0 92
+_sendSPI: CODE, 948 0 46
+_recvSPI: CODE, 1074 0 12
+_WriteSPI: CODE, 1028 0 28
+_ReadSPI: CODE, 1056 0 18
 _low_isr: CODE, 24 0 138
-Total: 744
+Total: 1662
