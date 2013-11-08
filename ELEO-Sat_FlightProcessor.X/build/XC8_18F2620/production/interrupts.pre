@@ -4552,21 +4552,42 @@ typedef uint16_t uintptr_t;
 # 12 "C:/Program Files (x86)/Microchip/xc8/v1.21/include\stdbool.h"
 typedef unsigned char bool;
 
-# 27 "interrupts.c"
+# 11 "xbee.h"
+char recvBuff[6];
+char recvIdx = 0;
+char sendBuff[41];
+char sendIdx = 0;
+char pollRecv = 0;
+
+void initXbee();
+void sendXbee();
+
+# 29 "interrupts.c"
 void interrupt high_isr(void)
 
-# 36
+# 38
 {
 
-# 63
+# 50
+if((PIR1bits.RCIF))
+{
+getsUSART((char *) recvBuff, 6);
+if(recvBuff[0] == 0x4E && recvBuff[1] == 0x4E && recvBuff[2] == 0x4E)
+{
+pollRecv = 1;
+}
+}
+
+
+
 }
 
 
 
 void low_priority interrupt low_isr(void)
 
-# 75
+# 73
 {
 
-# 102
+# 100
 }

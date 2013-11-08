@@ -15,7 +15,7 @@ char sendIdx = 0;
 char pollRecv = 0;
 
 void initXbee();
-
+void sendXbee();
 
 #endif	/* XBEE_H */
 

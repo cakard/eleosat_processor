@@ -2,7 +2,7 @@
 [d version 1.1 ]
 [d edition pro ]
 [d chip 18F2620 ]
-"62 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\main.c
+"78 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\main.c
 [e E3678 . `uc
 Power 0
 Instrument 1
@@ -18,6 +18,11 @@ switch2_on 5
 switch2_off 6
 switch3_on 7
 switch3_off 8
+R_Current 9
+Solar_Current 10
+Solar_Voltage 11
+Temperature 12
+Processor_Voltage 13
 ]
 "42 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
 [e E3674 . `uc
@@ -35,6 +40,11 @@ switch2_on 5
 switch2_off 6
 switch3_on 7
 switch3_off 8
+R_Current 9
+Solar_Current 10
+Solar_Voltage 11
+Temperature 12
+Processor_Voltage 13
 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\abdiv.c
 [v ___abdiv __abdiv `(c  1 e 1 0 ]
@@ -158,35 +168,57 @@ switch3_off 8
 [v ___asftsub __asftsub `(f  1 e 3 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\aslmul.c
 [v ___aslmul __aslmul `(ul  1 e 4 0 ]
+"27 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcbusy.c
+[v _BusyADC BusyADC `(uc  1 e 1 0 ]
 "24 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcclose.c
 [v _CloseADC CloseADC `(v  1 e 0 0 ]
+"23 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcconv.c
+[v _ConvertADC ConvertADC `(v  1 e 0 0 ]
 "71 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcopen.c
 [v _OpenADC OpenADC `(v  1 e 0 0 ]
+"25 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcread.c
+[v _ReadADC ReadADC `(i  1 e 2 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_open.c
 [v _OpenSPI OpenSPI `(v  1 e 0 0 ]
 "13 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_read.c
 [v _ReadSPI ReadSPI `(uc  1 e 1 0 ]
 "14 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_writ.c
 [v _WriteSPI WriteSPI `(c  1 e 1 0 ]
-"36 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\interrupts.c
+"19 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\Timers\t0open.c
+[v _OpenTimer0 OpenTimer0 `(v  1 e 0 0 ]
+"17 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\Timers\t0write.c
+[v _WriteTimer0 WriteTimer0 `(v  1 e 0 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\ugets.c
+[v _getsUSART getsUSART `(v  1 e 0 0 ]
+"74 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\uopen.c
+[v _OpenUSART OpenUSART `(v  1 e 0 0 ]
+"16 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\uread.c
+[v _ReadUSART ReadUSART `(uc  1 e 1 0 ]
+"14 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\uwrite.c
+[v _WriteUSART WriteUSART `(v  1 e 0 0 ]
+"38 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\interrupts.c
 [v _high_isr high_isr `II(v  1 e 0 0 ]
-"75
+"73
 [v _low_isr low_isr `IIL(v  1 e 0 0 ]
-"37 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\main.c
+"38 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\main.c
 [v _main main `(v  1 e 0 0 ]
 "27 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
 [v _setupSPI setupSPI `(v  1 e 0 0 ]
 "42
 [v _sendSPI sendSPI `(v  1 e 0 0 ]
-"69
+"65
 [v _recvSPI recvSPI `(uc  1 e 1 0 ]
 "25 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\system.c
 [v _ConfigureOscillator ConfigureOscillator `(v  1 e 0 0 ]
-"31 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\user.c
+"32 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\user.c
 [v _InitApp InitApp `(v  1 e 0 0 ]
+"24 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\xbee.c
+[v _initXbee initXbee `(v  1 e 0 0 ]
+"42
+[v _sendXbee sendXbee `(v  1 e 0 0 ]
 "182 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S58 . 1 `uc 1 RB0 1 0 :1:0 
+[s S88 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -196,7 +228,7 @@ switch3_off 8
 `uc 1 RB7 1 0 :1:7 
 ]
 "223
-[s S67 . 1 `uc 1 INT0 1 0 :1:0 
+[s S97 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -205,7 +237,7 @@ switch3_off 8
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S76 . 1 `uc 1 AN12 1 0 :1:0 
+[s S106 . 1 `uc 1 AN12 1 0 :1:0 
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -214,183 +246,113 @@ switch3_off 8
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S85 . 1 `uc 1 . 1 0 :3:0 
+[s S115 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S88 . 1 `S58 1 . 1 0 `S67 1 . 1 0 `S76 1 . 1 0 `S85 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES88  1 e 1 @3969 ]
+[u S118 . 1 `S88 1 . 1 0 `S97 1 . 1 0 `S106 1 . 1 0 `S115 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES118  1 e 1 @3969 ]
 "1194
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "1415
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S21 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+]
+"2018
+[s S29 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RC1IF 1 0 :1:5 
+]
+[s S32 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TX1IF 1 0 :1:4 
+]
+[u S35 . 1 `S21 1 . 1 0 `S29 1 . 1 0 `S32 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES35  1 e 1 @3998 ]
+"2091
+[v _IPR1bits IPR1bits `VES35  1 e 1 @3999 ]
+[s S642 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"2693
+[s S651 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 BRGH1 1 0 :1:2 
+]
+[s S654 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S657 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SENDB1 1 0 :1:3 
+]
+[s S660 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 SYNC1 1 0 :1:4 
+]
+[s S663 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+]
+[s S666 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX91 1 0 :1:6 
+]
+[s S669 . 1 `uc 1 TX9D1 1 0 :1:0 
+]
+[s S671 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 TXEN1 1 0 :1:5 
+]
+[s S674 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[s S677 . 1 `uc 1 TXD8 1 0 :1:0 
+]
+[u S679 . 1 `S642 1 . 1 0 `S651 1 . 1 0 `S654 1 . 1 0 `S657 1 . 1 0 `S660 1 . 1 0 `S663 1 . 1 0 `S666 1 . 1 0 `S669 1 . 1 0 `S671 1 . 1 0 `S674 1 . 1 0 `S677 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES679  1 e 1 @4012 ]
 "3874
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
 "4165
 [v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
 "4479
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
-[s S781 . 1 `uc 1 TRISC0 1 0 :1:0 
-`uc 1 TRISC1 1 0 :1:1 
-`uc 1 TRISC2 1 0 :1:2 
-`uc 1 TRISC3 1 0 :1:3 
-`uc 1 TRISC4 1 0 :1:4 
-`uc 1 TRISC5 1 0 :1:5 
-`uc 1 TRISC6 1 0 :1:6 
-`uc 1 TRISC7 1 0 :1:7 
+[s S383 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
-"1226 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f2620.h
-[s S790 . 1 `uc 1 RC0 1 0 :1:0 
-`uc 1 RC1 1 0 :1:1 
-`uc 1 RC2 1 0 :1:2 
-`uc 1 RC3 1 0 :1:3 
-`uc 1 RC4 1 0 :1:4 
-`uc 1 RC5 1 0 :1:5 
-`uc 1 RC6 1 0 :1:6 
-`uc 1 RC7 1 0 :1:7 
+"4835
+[s S385 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
 ]
-[u S799 . 1 `S781 1 . 1 0 `S790 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES799  1 e 1 @3986 ]
-"1668
-[v _TRISCbits TRISCbits `VES799  1 e 1 @3988 ]
-[s S345 . 1 `uc 1 TMR1IE 1 0 :1:0 
-`uc 1 TMR2IE 1 0 :1:1 
-`uc 1 CCP1IE 1 0 :1:2 
-`uc 1 SSPIE 1 0 :1:3 
-`uc 1 TXIE 1 0 :1:4 
-`uc 1 RCIE 1 0 :1:5 
-`uc 1 ADIE 1 0 :1:6 
+[s S388 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
 ]
-"1945
-[s S353 . 1 `uc 1 . 1 0 :5:0 
-`uc 1 RC1IE 1 0 :1:5 
+[s S391 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S356 . 1 `uc 1 . 1 0 :4:0 
-`uc 1 TX1IE 1 0 :1:4 
+[s S394 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
 ]
-[u S359 . 1 `S345 1 . 1 0 `S353 1 . 1 0 `S356 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES359  1 e 1 @3997 ]
-"2018
-[v _PIR1bits PIR1bits `VES359  1 e 1 @3998 ]
-"3804
-[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
-"3964
-[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
-[s S270 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 GO_NOT_DONE 1 0 :1:1 
+[s S397 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SBOREN 1 0 :1:6 
+`uc 1 IPEN 1 0 :1:7 
 ]
-"4012
-[s S273 . 1 `uc 1 ADON 1 0 :1:0 
-`uc 1 GO_nDONE 1 0 :1:1 
-`uc 1 CHS 1 0 :4:2 
+[s S406 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
 ]
-[s S280 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 GO 1 0 :1:1 
-`uc 1 CHS0 1 0 :1:2 
-`uc 1 CHS1 1 0 :1:3 
-`uc 1 CHS2 1 0 :1:4 
-`uc 1 CHS3 1 0 :1:5 
-]
-[s S287 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 DONE 1 0 :1:1 
-]
-[s S290 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 NOT_DONE 1 0 :1:1 
-]
-[s S293 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 nDONE 1 0 :1:1 
-]
-[s S296 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 GO_DONE 1 0 :1:1 
-]
-[s S299 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 GODONE 1 0 :1:1 
-]
-[u S302 . 1 `S270 1 . 1 0 `S273 1 . 1 0 `S270 1 . 1 0 `S280 1 . 1 0 `S287 1 . 1 0 `S290 1 . 1 0 `S293 1 . 1 0 `S296 1 . 1 0 `S299 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES302  1 e 1 @4034 ]
-[s S755 . 1 `uc 1 SSPM 1 0 :4:0 
-`uc 1 CKP 1 0 :1:4 
-`uc 1 SSPEN 1 0 :1:5 
-`uc 1 SSPOV 1 0 :1:6 
-`uc 1 WCOL 1 0 :1:7 
-]
-"4185
-[s S761 . 1 `uc 1 SSPM0 1 0 :1:0 
-`uc 1 SSPM1 1 0 :1:1 
-`uc 1 SSPM2 1 0 :1:2 
-`uc 1 SSPM3 1 0 :1:3 
-]
-[u S766 . 1 `S755 1 . 1 0 `S761 1 . 1 0 ]
-[v _SSPCON1bits SSPCON1bits `VES766  1 e 1 @4038 ]
-"4234
-[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
-[s S595 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 R_NOT_W 1 0 :1:2 
-]
-"4329
-[s S598 . 1 `uc 1 . 1 0 :5:0 
-`uc 1 D_NOT_A 1 0 :1:5 
-]
-[s S601 . 1 `uc 1 BF 1 0 :1:0 
-`uc 1 UA 1 0 :1:1 
-`uc 1 R_nW 1 0 :1:2 
-`uc 1 S 1 0 :1:3 
-`uc 1 P 1 0 :1:4 
-`uc 1 D_nA 1 0 :1:5 
-`uc 1 CKE 1 0 :1:6 
-`uc 1 SMP 1 0 :1:7 
-]
-[s S616 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 R 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 D 1 0 :1:5 
-]
-[s S621 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 W 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 A 1 0 :1:5 
-]
-[s S626 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 nW 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 nA 1 0 :1:5 
-]
-[s S631 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 R_W 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 D_A 1 0 :1:5 
-]
-[s S636 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 NOT_WRITE 1 0 :1:2 
-]
-[s S639 . 1 `uc 1 . 1 0 :5:0 
-`uc 1 NOT_ADDRESS 1 0 :1:5 
-]
-[s S642 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 nWRITE 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 nADDRESS 1 0 :1:5 
-]
-[s S647 . 1 `uc 1 . 1 0 :5:0 
-`uc 1 DA 1 0 :1:5 
-]
-[s S650 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 RW 1 0 :1:2 
-]
-[s S653 . 1 `uc 1 . 1 0 :3:0 
-`uc 1 START 1 0 :1:3 
-]
-[s S656 . 1 `uc 1 . 1 0 :4:0 
-`uc 1 STOP 1 0 :1:4 
-]
-[s S659 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 NOT_W 1 0 :1:2 
-]
-[s S662 . 1 `uc 1 . 1 0 :5:0 
-`uc 1 NOT_A 1 0 :1:5 
-]
-[u S665 . 1 `S595 1 . 1 0 `S598 1 . 1 0 `S601 1 . 1 0 `S595 1 . 1 0 `S598 1 . 1 0 `S616 1 . 1 0 `S621 1 . 1 0 `S626 1 . 1 0 `S631 1 . 1 0 `S636 1 . 1 0 `S639 1 . 1 0 `S642 1 . 1 0 `S647 1 . 1 0 `S650 1 . 1 0 `S653 1 . 1 0 `S656 1 . 1 0 `S659 1 . 1 0 `S662 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES665  1 e 1 @4039 ]
-[s S444 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S412 . 1 `S383 1 . 1 0 `S385 1 . 1 0 `S388 1 . 1 0 `S391 1 . 1 0 `S394 1 . 1 0 `S397 1 . 1 0 `S406 1 . 1 0 ]
+[v _RCONbits RCONbits `VES412  1 e 1 @4048 ]
+[s S154 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -400,7 +362,7 @@ switch3_off 8
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "5841
-[s S453 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S163 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -409,7 +371,7 @@ switch3_off 8
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S462 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S172 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -418,7 +380,7 @@ switch3_off 8
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[s S471 . 1 `uc 1 . 1 0 :1:0 
+[s S181 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -427,53 +389,331 @@ switch3_off 8
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S480 . 1 `uc 1 . 1 0 :6:0 
+[s S190 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S484 . 1 `S444 1 . 1 0 `S453 1 . 1 0 `S462 1 . 1 0 `S471 1 . 1 0 `S480 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES484  1 e 1 @4082 ]
-"37 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\main.c
+[u S194 . 1 `S154 1 . 1 0 `S163 1 . 1 0 `S172 1 . 1 0 `S181 1 . 1 0 `S190 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES194  1 e 1 @4082 ]
+[s S1295 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1226 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f2620.h
+[s S1304 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S1313 . 1 `S1295 1 . 1 0 `S1304 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES1313  1 e 1 @3986 ]
+"1668
+[v _TRISCbits TRISCbits `VES1313  1 e 1 @3988 ]
+"1945
+[v _PIE1bits PIE1bits `VES35  1 e 1 @3997 ]
+"2424
+[v _RCSTA RCSTA `VEuc  1 e 1 @4011 ]
+[s S1647 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"2465
+[s S1656 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S1659 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[s S1662 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S1665 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S1668 . 1 `uc 1 RCD8 1 0 :1:0 
+]
+[u S1670 . 1 `S1647 1 . 1 0 `S1656 1 . 1 0 `S1659 1 . 1 0 `S1662 1 . 1 0 `S1665 1 . 1 0 `S1668 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES1670  1 e 1 @4011 ]
+"2633
+[v _TXSTA TXSTA `VEuc  1 e 1 @4012 ]
+"2930
+[v _TXREG TXREG `VEuc  1 e 1 @4013 ]
+"2941
+[v _RCREG RCREG `VEuc  1 e 1 @4014 ]
+"2952
+[v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
+"2963
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @4016 ]
+"3804
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
+"3964
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+[s S756 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"4012
+[s S759 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S766 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S773 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S776 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S779 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S782 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[s S785 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S788 . 1 `S756 1 . 1 0 `S759 1 . 1 0 `S756 1 . 1 0 `S766 1 . 1 0 `S773 1 . 1 0 `S776 1 . 1 0 `S779 1 . 1 0 `S782 1 . 1 0 `S785 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES788  1 e 1 @4034 ]
+"4092
+[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
+"4098
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+[s S1269 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"4185
+[s S1275 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S1280 . 1 `S1269 1 . 1 0 `S1275 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES1280  1 e 1 @4038 ]
+"4234
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
+[s S1109 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_NOT_W 1 0 :1:2 
+]
+"4329
+[s S1112 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_NOT_A 1 0 :1:5 
+]
+[s S1115 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S1130 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S1135 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 A 1 0 :1:5 
+]
+[s S1140 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S1145 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S1150 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_WRITE 1 0 :1:2 
+]
+[s S1153 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_ADDRESS 1 0 :1:5 
+]
+[s S1156 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S1161 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 DA 1 0 :1:5 
+]
+[s S1164 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW 1 0 :1:2 
+]
+[s S1167 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 START 1 0 :1:3 
+]
+[s S1170 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 STOP 1 0 :1:4 
+]
+[s S1173 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_W 1 0 :1:2 
+]
+[s S1176 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_A 1 0 :1:5 
+]
+[u S1179 . 1 `S1109 1 . 1 0 `S1112 1 . 1 0 `S1115 1 . 1 0 `S1109 1 . 1 0 `S1112 1 . 1 0 `S1130 1 . 1 0 `S1135 1 . 1 0 `S1140 1 . 1 0 `S1145 1 . 1 0 `S1150 1 . 1 0 `S1153 1 . 1 0 `S1156 1 . 1 0 `S1161 1 . 1 0 `S1164 1 . 1 0 `S1167 1 . 1 0 `S1170 1 . 1 0 `S1173 1 . 1 0 `S1176 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES1179  1 e 1 @4039 ]
+"5296
+[v _T0CON T0CON `VEuc  1 e 1 @4053 ]
+[s S1519 . 1 `uc 1 T0PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 T08BIT 1 0 :1:6 
+`uc 1 TMR0ON 1 0 :1:7 
+]
+"5318
+[s S1526 . 1 `uc 1 T0PS0 1 0 :1:0 
+`uc 1 T0PS1 1 0 :1:1 
+`uc 1 T0PS2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 T016BIT 1 0 :1:6 
+]
+[u S1532 . 1 `S1519 1 . 1 0 `S1526 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES1532  1 e 1 @4053 ]
+"5378
+[v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
+"5384
+[v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
+[s S1776 . 1 `uc 1 RX_NINE 1 0 :1:0 
+`uc 1 TX_NINE 1 0 :1:1 
+`uc 1 FRAME_ERROR 1 0 :1:2 
+`uc 1 OVERRUN_ERROR 1 0 :1:3 
+`uc 1 fill 1 0 :4:4 
+]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\udefs.c
+[u S1782 USART 1 `uc 1 val 1 0 `S1776 1 . 1 0 ]
+[v _USART_Status USART_Status `S1782  1 e 1 0 ]
+"31 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\main.c
+[v _TemperatureReading TemperatureReading `ui  1 e 2 0 ]
+"11 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\xbee.h
+[v _recvBuff recvBuff `[6]uc  1 e 6 0 ]
+"12
+[v _recvIdx recvIdx `uc  1 e 1 0 ]
+"13
+[v _sendBuff sendBuff `[41]uc  1 e 41 0 ]
+"14
+[v _sendIdx sendIdx `uc  1 e 1 0 ]
+"15
+[v _pollRecv pollRecv `uc  1 e 1 0 ]
+"38 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\main.c
 [v _main main `(v  1 e 0 0 ]
 {
-"94
+"56
+[v main@i i `i  1 a 2 52 ]
+"115
 } 0
-"69 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
+"65 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
 [v _recvSPI recvSPI `(uc  1 e 1 0 ]
 {
-[v recvSPI@slave slave `E3674  1 p 1 32 ]
-"76
+[v recvSPI@slave slave `E3674  1 p 1 40 ]
+"84
 } 0
 "13 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_read.c
 [v _ReadSPI ReadSPI `(uc  1 e 1 0 ]
 {
 "14
-[v ReadSPI@TempVar TempVar `uc  1 a 1 31 ]
+[v ReadSPI@TempVar TempVar `uc  1 a 1 39 ]
 "21
 } 0
 "42 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
 [v _sendSPI sendSPI `(v  1 e 0 0 ]
 {
-"43
-[v sendSPI@retval retval `uc  1 a 1 36 ]
-"42
-[v sendSPI@slave slave `E3674  1 p 1 33 ]
-[v sendSPI@command command `E3679  1 p 1 34 ]
-"66
+[v sendSPI@slave slave `E3674  1 p 1 41 ]
+[v sendSPI@command command `E3679  1 p 1 42 ]
+"62
 } 0
 "14 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_writ.c
 [v _WriteSPI WriteSPI `(c  1 e 1 0 ]
 {
 "15
-[v WriteSPI@TempVar TempVar `uc  1 a 1 32 ]
+[v WriteSPI@TempVar TempVar `uc  1 a 1 40 ]
 "14
-[v WriteSPI@data_out data_out `uc  1 p 1 31 ]
+[v WriteSPI@data_out data_out `uc  1 p 1 39 ]
 "26
 } 0
-"31 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\user.c
+"25 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcread.c
+[v _ReadADC ReadADC `(i  1 e 2 0 ]
+{
+"27
+} 0
+"27 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcbusy.c
+[v _BusyADC BusyADC `(uc  1 e 1 0 ]
+{
+"29
+} 0
+"23 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcconv.c
+[v _ConvertADC ConvertADC `(v  1 e 0 0 ]
+{
+"25
+} 0
+"42 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\xbee.c
+[v _sendXbee sendXbee `(v  1 e 0 0 ]
+{
+"43
+[v sendXbee@i i `i  1 a 2 40 ]
+"48
+} 0
+"14 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\uwrite.c
+[v _WriteUSART WriteUSART `(v  1 e 0 0 ]
+{
+[v WriteUSART@data data `uc  1 p 1 39 ]
+"23
+} 0
+"32 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\user.c
 [v _InitApp InitApp `(v  1 e 0 0 ]
 {
-"57
+"64
+} 0
+"19 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\Timers\t0open.c
+[v _OpenTimer0 OpenTimer0 `(v  1 e 0 0 ]
+{
+[v OpenTimer0@config config `uc  1 p 1 39 ]
+"31
+} 0
+"24 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\xbee.c
+[v _initXbee initXbee `(v  1 e 0 0 ]
+{
+"28
+[v initXbee@i_743 i `i  1 a 2 45 ]
+"26
+[v initXbee@i i `i  1 a 2 43 ]
+"39
+} 0
+"74 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\uopen.c
+[v _OpenUSART OpenUSART `(v  1 e 0 0 ]
+{
+[v OpenUSART@config config `uc  1 p 1 39 ]
+[v OpenUSART@spbrg spbrg `ui  1 p 2 40 ]
+"143
 } 0
 "27 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
 [v _setupSPI setupSPI `(v  1 e 0 0 ]
@@ -483,17 +723,17 @@ switch3_off 8
 "15 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_open.c
 [v _OpenSPI OpenSPI `(v  1 e 0 0 ]
 {
-[v OpenSPI@sync_mode sync_mode `uc  1 p 1 31 ]
-[v OpenSPI@bus_mode bus_mode `uc  1 p 1 32 ]
-[v OpenSPI@smp_phase smp_phase `uc  1 p 1 33 ]
+[v OpenSPI@sync_mode sync_mode `uc  1 p 1 39 ]
+[v OpenSPI@bus_mode bus_mode `uc  1 p 1 40 ]
+[v OpenSPI@smp_phase smp_phase `uc  1 p 1 41 ]
 "102
 } 0
 "71 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcopen.c
 [v _OpenADC OpenADC `(v  1 e 0 0 ]
 {
-[v OpenADC@config config `uc  1 p 1 31 ]
-[v OpenADC@config2 config2 `uc  1 p 1 32 ]
-[v OpenADC@portconfig portconfig `uc  1 p 1 33 ]
+[v OpenADC@config config `uc  1 p 1 39 ]
+[v OpenADC@config2 config2 `uc  1 p 1 40 ]
+[v OpenADC@portconfig portconfig `uc  1 p 1 41 ]
 "89
 } 0
 "24 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcclose.c
@@ -501,18 +741,47 @@ switch3_off 8
 {
 "27
 } 0
+"17 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\Timers\t0write.c
+[v _WriteTimer0 WriteTimer0 `(v  1 e 0 0 ]
+{
+[u S1557 Timers 2 `ui 1 lt 2 0 `[2]uc 1 bt 2 0 ]
+"18
+[v WriteTimer0@timer timer `S1557  1 a 2 41 ]
+"17
+[v WriteTimer0@timer0 timer0 `ui  1 p 2 39 ]
+"24
+} 0
 "25 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\system.c
 [v _ConfigureOscillator ConfigureOscillator `(v  1 e 0 0 ]
 {
 "33
 } 0
-"75 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\interrupts.c
+"73 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\interrupts.c
 [v _low_isr low_isr `IIL(v  1 e 0 0 ]
 {
-"102
+"100
 } 0
-"36
+"38
 [v _high_isr high_isr `II(v  1 e 0 0 ]
 {
-"63
+"61
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\ugets.c
+[v _getsUSART getsUSART `(v  1 e 0 0 ]
+{
+"16
+[v getsUSART@i i `uc  1 a 1 23 ]
+"17
+[v getsUSART@data data `uc  1 a 1 22 ]
+"15
+[v getsUSART@buffer buffer `*.39uc  1 p 2 18 ]
+[v getsUSART@len len `uc  1 p 1 20 ]
+"28
+} 0
+"16 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\uread.c
+[v _ReadUSART ReadUSART `(uc  1 e 1 0 ]
+{
+"17
+[v ReadUSART@data data `uc  1 a 1 17 ]
+"37
 } 0

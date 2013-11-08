@@ -23,8 +23,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "42 spi_comm.c
 [c E3674 0 1 2 .. ]
 [n E3674 . Power Instrument Communication  ]
-[c E3679 0 1 2 3 4 5 6 7 8 .. ]
-[n E3679 . null switch0_on switch0_off switch1_on switch1_off switch2_on switch2_off switch3_on switch3_off  ]
+[c E3679 0 1 2 3 4 5 6 7 8 9 10 11 12 13 .. ]
+[n E3679 . null switch0_on switch0_off switch1_on switch1_off switch2_on switch2_off switch3_on switch3_off R_Current Solar_Current Solar_Voltage Temperature Processor_Voltage  ]
 "588 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\spi.h
 [v _WriteSPI `(c ~T0 @X0 0 ef1`uc ]
 "594
@@ -3425,11 +3425,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;spi_comm.h: 27: switch2_on = 0x05,
 [; ;spi_comm.h: 28: switch2_off = 0x06,
 [; ;spi_comm.h: 29: switch3_on = 0x07,
-[; ;spi_comm.h: 30: switch3_off = 0x08
-[; ;spi_comm.h: 31: } Commands;
-[; ;spi_comm.h: 33: void setupSPI();
-[; ;spi_comm.h: 34: void sendSPI(Slaves slave, Commands command);
-[; ;spi_comm.h: 35: char recvSPI(Slaves slave);
+[; ;spi_comm.h: 30: switch3_off = 0x08,
+[; ;spi_comm.h: 31: R_Current = 0x09,
+[; ;spi_comm.h: 32: Solar_Current = 0x0a,
+[; ;spi_comm.h: 33: Solar_Voltage = 0x0b,
+[; ;spi_comm.h: 34: Temperature = 0x0c,
+[; ;spi_comm.h: 35: Processor_Voltage = 0x0d
+[; ;spi_comm.h: 36: } Commands;
+[; ;spi_comm.h: 38: void setupSPI();
+[; ;spi_comm.h: 39: void sendSPI(Slaves slave, Commands command);
+[; ;spi_comm.h: 40: char recvSPI(Slaves slave);
 "27 spi_comm.c
 [v _setupSPI `(v ~T0 @X0 1 ef ]
 {
@@ -3459,85 +3464,117 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _slave `E3674 ~T0 @X0 1 r1 ]
 [v _command `E3679 ~T0 @X0 1 r2 ]
 [f ]
+[; ;spi_comm.c: 43: switch(slave)
 "43
-[v _retval `uc ~T0 @X0 1 a ]
-[; ;spi_comm.c: 43: char retval = 0x00;
-[e = _retval -> -> 0 `i `uc ]
-[; ;spi_comm.c: 45: switch(slave)
-"45
 [e $U 362  ]
-[; ;spi_comm.c: 46: {
-"46
+[; ;spi_comm.c: 44: {
+"44
 {
-[; ;spi_comm.c: 47: case Power:
-"47
+[; ;spi_comm.c: 45: case Power:
+"45
 [e :U 363 ]
-[; ;spi_comm.c: 50: (PORTBbits.RB0 = 0);
-"50
+[; ;spi_comm.c: 48: (PORTBbits.RB0 = 0);
+"48
 [e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
-[; ;spi_comm.c: 51: while(WriteSPI(command));
-"51
+[; ;spi_comm.c: 49: while(WriteSPI(command));
+"49
 [e $U 364  ]
 [e :U 365 ]
 [e :U 364 ]
 [e $ != -> ( _WriteSPI (1 -> _command `uc `i -> -> -> 0 `i `c `i 365  ]
 [e :U 366 ]
-[; ;spi_comm.c: 57: (PORTBbits.RB0 = 1);
-"57
+[; ;spi_comm.c: 55: (PORTBbits.RB0 = 1);
+"55
 [e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+[; ;spi_comm.c: 56: break;
+"56
+[e $U 361  ]
+[; ;spi_comm.c: 57: case Instrument:
+"57
+[e :U 367 ]
 [; ;spi_comm.c: 58: break;
 "58
 [e $U 361  ]
-[; ;spi_comm.c: 59: case Instrument:
+[; ;spi_comm.c: 59: case Communication:
 "59
-[e :U 367 ]
+[e :U 368 ]
 [; ;spi_comm.c: 60: break;
 "60
 [e $U 361  ]
-[; ;spi_comm.c: 61: case Communication:
 "61
-[e :U 368 ]
-[; ;spi_comm.c: 62: break;
-"62
-[e $U 361  ]
-"63
 }
-[; ;spi_comm.c: 63: }
+[; ;spi_comm.c: 61: }
 [e $U 361  ]
-"45
+"43
 [e :U 362 ]
 [e [\ _slave , $ -> . `E3674 0 `E3674 363
  , $ -> . `E3674 1 `E3674 367
  , $ -> . `E3674 2 `E3674 368
  361 ]
-"63
+"61
 [e :U 361 ]
-[; ;spi_comm.c: 66: }
-"66
+[; ;spi_comm.c: 62: }
+"62
 [e :UE 360 ]
 }
-"69
+"65
 [v _recvSPI `(uc ~T0 @X0 1 ef1`E3674 ]
 {
-[; ;spi_comm.c: 68: char recvSPI(Slaves slave)
-[; ;spi_comm.c: 69: {
+[; ;spi_comm.c: 64: char recvSPI(Slaves slave)
+[; ;spi_comm.c: 65: {
 [e :U _recvSPI ]
 [v _slave `E3674 ~T0 @X0 1 r1 ]
 [f ]
-[; ;spi_comm.c: 70: (PORTBbits.RB0 = 0);
-"70
+[; ;spi_comm.c: 66: switch(slave)
+"66
+[e $U 371  ]
+[; ;spi_comm.c: 67: {
+"67
+{
+[; ;spi_comm.c: 68: case Power:
+"68
+[e :U 372 ]
+[; ;spi_comm.c: 69: (PORTBbits.RB0 = 0);
+"69
 [e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
-[; ;spi_comm.c: 73: ReadSPI();
-"73
+[; ;spi_comm.c: 70: ReadSPI();
+"70
 [e ( _ReadSPI ..  ]
-[; ;spi_comm.c: 74: (PORTBbits.RB0 = 1);
-"74
+[; ;spi_comm.c: 71: (PORTBbits.RB0 = 1);
+"71
 [e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-[; ;spi_comm.c: 75: return SSPBUF;
+[; ;spi_comm.c: 72: break;
+"72
+[e $U 370  ]
+[; ;spi_comm.c: 73: case Instrument:
+"73
+[e :U 373 ]
+[; ;spi_comm.c: 74: break;
+"74
+[e $U 370  ]
+[; ;spi_comm.c: 75: case Communication:
 "75
+[e :U 374 ]
+[; ;spi_comm.c: 76: break;
+"76
+[e $U 370  ]
+"77
+}
+[; ;spi_comm.c: 77: }
+[e $U 370  ]
+"66
+[e :U 371 ]
+[e [\ _slave , $ -> . `E3674 0 `E3674 372
+ , $ -> . `E3674 1 `E3674 373
+ , $ -> . `E3674 2 `E3674 374
+ 370 ]
+"77
+[e :U 370 ]
+[; ;spi_comm.c: 83: return SSPBUF;
+"83
 [e ) _SSPBUF ]
 [e $UE 369  ]
-[; ;spi_comm.c: 76: }
-"76
+[; ;spi_comm.c: 84: }
+"84
 [e :UE 369 ]
 }

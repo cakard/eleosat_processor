@@ -40,8 +40,6 @@ void setupSPI()
  */
 void sendSPI(Slaves slave, Commands command)
 {
-    char retval = 0x00;
-
     switch(slave)
     {
         case Power:
@@ -61,16 +59,26 @@ void sendSPI(Slaves slave, Commands command)
         case Communication:
             break;
     }
-
-    //return retval;
 }
 
 char recvSPI(Slaves slave)
 {
-    SELECT_POWER;
-    //WriteSPI(null);
-    //while(!SSPSTATbits.BF);
-    ReadSPI();
-    DESELECT_POWER;
+    switch(slave)
+    {
+        case Power:
+            SELECT_POWER;
+            ReadSPI();
+            DESELECT_POWER;
+            break;
+        case Instrument:
+            break;
+        case Communication:
+            break;
+    }
+//    SELECT_POWER;
+//    //WriteSPI(null);
+//    //while(!SSPSTATbits.BF);
+//    ReadSPI();
+//    DESELECT_POWER;
     return SSPBUF;
 }

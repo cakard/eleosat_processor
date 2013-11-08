@@ -28,8 +28,60 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _CloseADC `(v ~T0 @X0 0 ef ]
 "2042
 [v _OpenADC `(v ~T0 @X0 0 ef3`uc`uc`uc ]
-"33 spi_comm.h
+"38 spi_comm.h
 [v _setupSPI `(v ~T0 @X0 0 ef ]
+"17 xbee.h
+[v _initXbee `(v ~T0 @X0 0 ef ]
+"118 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\timers.h
+[v _OpenTimer0 `(v ~T0 @X0 0 ef1`uc ]
+"121
+[v _WriteTimer0 `(v ~T0 @X0 0 ef1`ui ]
+"4798 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
+[s S274 :1 `uc 1 ]
+[n S274 . NOT_BOR ]
+"4801
+[s S275 :1 `uc 1 :1 `uc 1 ]
+[n S275 . . NOT_POR ]
+"4805
+[s S276 :2 `uc 1 :1 `uc 1 ]
+[n S276 . . NOT_PD ]
+"4809
+[s S277 :3 `uc 1 :1 `uc 1 ]
+[n S277 . . NOT_TO ]
+"4813
+[s S278 :4 `uc 1 :1 `uc 1 ]
+[n S278 . . NOT_RI ]
+"4817
+[s S279 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S279 . nBOR nPOR nPD nTO nRI . SBOREN IPEN ]
+"4827
+[s S280 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S280 . BOR POR PD TO RI ]
+"4797
+[u S273 `S274 1 `S275 1 `S276 1 `S277 1 `S278 1 `S279 1 `S280 1 ]
+[n S273 . . . . . . . . ]
+"4835
+[v _RCONbits `VS273 ~T0 @X0 0 e@4048 ]
+"5795
+[s S314 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S314 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"5805
+[s S315 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S315 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE GIE ]
+"5815
+[s S316 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S316 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE GIEL GIEH ]
+"5825
+[s S317 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S317 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"5835
+[s S318 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S318 . . GIEL GIEH ]
+"5794
+[u S313 `S314 1 `S315 1 `S316 1 `S317 1 `S318 1 ]
+[n S313 . . . . . . ]
+"5841
+[v _INTCONbits `VS313 ~T0 @X0 0 e@4082 ]
 [; ;include\pic18f2620.h: 44: extern volatile unsigned char PORTA @ 0xF80;
 "46 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
 [; ;include\pic18f2620.h: 46: asm("PORTA equ 0F80h");
@@ -3425,45 +3477,91 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;spi_comm.h: 27: switch2_on = 0x05,
 [; ;spi_comm.h: 28: switch2_off = 0x06,
 [; ;spi_comm.h: 29: switch3_on = 0x07,
-[; ;spi_comm.h: 30: switch3_off = 0x08
-[; ;spi_comm.h: 31: } Commands;
-[; ;spi_comm.h: 33: void setupSPI();
-[; ;spi_comm.h: 34: void sendSPI(Slaves slave, Commands command);
-[; ;spi_comm.h: 35: char recvSPI(Slaves slave);
-"31 user.c
+[; ;spi_comm.h: 30: switch3_off = 0x08,
+[; ;spi_comm.h: 31: R_Current = 0x09,
+[; ;spi_comm.h: 32: Solar_Current = 0x0a,
+[; ;spi_comm.h: 33: Solar_Voltage = 0x0b,
+[; ;spi_comm.h: 34: Temperature = 0x0c,
+[; ;spi_comm.h: 35: Processor_Voltage = 0x0d
+[; ;spi_comm.h: 36: } Commands;
+[; ;spi_comm.h: 38: void setupSPI();
+[; ;spi_comm.h: 39: void sendSPI(Slaves slave, Commands command);
+[; ;spi_comm.h: 40: char recvSPI(Slaves slave);
+"11 xbee.h
+[v _recvBuff `uc ~T0 @X0 -> 6 `i e ]
+[; ;xbee.h: 11: char recvBuff[6];
+"12
+[v _recvIdx `uc ~T0 @X0 1 e ]
+[i _recvIdx
+-> -> 0 `i `uc
+]
+[; ;xbee.h: 12: char recvIdx = 0;
+"13
+[v _sendBuff `uc ~T0 @X0 -> 41 `i e ]
+[; ;xbee.h: 13: char sendBuff[41];
+"14
+[v _sendIdx `uc ~T0 @X0 1 e ]
+[i _sendIdx
+-> -> 0 `i `uc
+]
+[; ;xbee.h: 14: char sendIdx = 0;
+"15
+[v _pollRecv `uc ~T0 @X0 1 e ]
+[i _pollRecv
+-> -> 0 `i `uc
+]
+[; ;xbee.h: 15: char pollRecv = 0;
+[; ;xbee.h: 17: void initXbee();
+[; ;xbee.h: 18: void sendXbee();
+"32 user.c
 [v _InitApp `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 30: void InitApp(void)
-[; ;user.c: 31: {
+[; ;user.c: 31: void InitApp(void)
+[; ;user.c: 32: {
 [e :U _InitApp ]
 [f ]
-[; ;user.c: 35: ADCON1 = 0b00001010;
-"35
-[e = _ADCON1 -> -> 10 `i `uc ]
-[; ;user.c: 36: TRISA = 0b00000001;
+[; ;user.c: 36: ADCON1 = 0b00001010;
 "36
-[e = _TRISA -> -> 1 `i `uc ]
-[; ;user.c: 37: TRISB = 0b00000000;
+[e = _ADCON1 -> -> 10 `i `uc ]
+[; ;user.c: 37: TRISA = 0b00000001;
 "37
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;user.c: 38: PORTB = 0x00;
+[e = _TRISA -> -> 1 `i `uc ]
+[; ;user.c: 38: TRISB = 0b00000000;
 "38
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;user.c: 39: PORTBbits.RB0 = 1;
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;user.c: 39: PORTB = 0x00;
 "39
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;user.c: 40: PORTBbits.RB0 = 1;
+"40
 [e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-[; ;user.c: 42: CloseADC();
-"42
+[; ;user.c: 43: CloseADC();
+"43
 [e ( _CloseADC ..  ]
-[; ;user.c: 43: OpenADC(0b11011111 & 0b11110011 & 0b11111111,
-[; ;user.c: 44: 0b10000111 & 0b01111111 & 0b11111100,
-[; ;user.c: 45: 0b11111111);
-"45
+[; ;user.c: 44: OpenADC(0b11011111 & 0b11110011 & 0b11111111,
+[; ;user.c: 45: 0b10000111 & 0b01111111 & 0b11111100,
+[; ;user.c: 46: 0b11111111);
+"46
 [e ( _OpenADC (3 , , -> & & -> 223 `i -> 243 `i -> 255 `i `uc -> & & -> 135 `i -> 127 `i -> 252 `i `uc -> -> 255 `i `uc ]
-[; ;user.c: 47: setupSPI();
-"47
+[; ;user.c: 48: setupSPI();
+"48
 [e ( _setupSPI ..  ]
-[; ;user.c: 57: }
-"57
+[; ;user.c: 50: initXbee();
+"50
+[e ( _initXbee ..  ]
+[; ;user.c: 54: OpenTimer0(0b01111111 & 0b11111111 & 0b11011111 & 0b11110111);
+"54
+[e ( _OpenTimer0 (1 -> & & & -> 127 `i -> 255 `i -> 223 `i -> 247 `i `uc ]
+[; ;user.c: 55: WriteTimer0(0x0000);
+"55
+[e ( _WriteTimer0 (1 -> -> 0 `i `ui ]
+[; ;user.c: 59: RCONbits.IPEN = 1;
+"59
+[e = . . _RCONbits 5 7 -> -> 1 `i `uc ]
+[; ;user.c: 61: (INTCONbits.GIE = 1);
+"61
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;user.c: 64: }
+"64
 [e :UE 359 ]
 }

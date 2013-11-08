@@ -1,4 +1,20 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"2000 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
+[s S109 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S109 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
+"2009
+[s S110 :5 `uc 1 :1 `uc 1 ]
+[n S110 . . RC1IF ]
+"2013
+[s S111 :4 `uc 1 :1 `uc 1 ]
+[n S111 . . TX1IF ]
+"1999
+[u S108 `S109 1 `S110 1 `S111 1 ]
+[n S108 . . . . ]
+"2018
+[v _PIR1bits `VS108 ~T0 @X0 0 e@3998 ]
+"598 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\usart.h
+[v _getsUSART `(v ~T0 @X0 0 ef2`*uc`uc ]
 [; ;include\pic18f2620.h: 44: extern volatile unsigned char PORTA @ 0xF80;
 "46 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
 [; ;include\pic18f2620.h: 46: asm("PORTA equ 0F80h");
@@ -3379,27 +3395,79 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;include\stdint.h: 210: typedef int16_t intptr_t;
 [; ;include\stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;include\stdbool.h: 12: typedef unsigned char bool;
-"36 interrupts.c
-[v F3676 `(v ~T0 @X0 1 tf ]
-[v _high_isr `IF3676 ~T0 @X0 1 e ]
+"11 xbee.h
+[v _recvBuff `uc ~T0 @X0 -> 6 `i e ]
+[; ;xbee.h: 11: char recvBuff[6];
+"12
+[v _recvIdx `uc ~T0 @X0 1 e ]
+[i _recvIdx
+-> -> 0 `i `uc
+]
+[; ;xbee.h: 12: char recvIdx = 0;
+"13
+[v _sendBuff `uc ~T0 @X0 -> 41 `i e ]
+[; ;xbee.h: 13: char sendBuff[41];
+"14
+[v _sendIdx `uc ~T0 @X0 1 e ]
+[i _sendIdx
+-> -> 0 `i `uc
+]
+[; ;xbee.h: 14: char sendIdx = 0;
+"15
+[v _pollRecv `uc ~T0 @X0 1 e ]
+[i _pollRecv
+-> -> 0 `i `uc
+]
+[; ;xbee.h: 15: char pollRecv = 0;
+[; ;xbee.h: 17: void initXbee();
+[; ;xbee.h: 18: void sendXbee();
+"38 interrupts.c
+[v F3683 `(v ~T0 @X0 1 tf ]
+[v _high_isr `IF3683 ~T0 @X0 1 e ]
 {
-[; ;interrupts.c: 27: void interrupt high_isr(void)
-[; ;interrupts.c: 36: {
+[; ;interrupts.c: 29: void interrupt high_isr(void)
+[; ;interrupts.c: 38: {
 [e :U _high_isr ]
 [f ]
-[; ;interrupts.c: 63: }
-"63
+[; ;interrupts.c: 50: if((PIR1bits.RCIF))
+"50
+[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 360  ]
+[; ;interrupts.c: 51: {
+"51
+{
+[; ;interrupts.c: 52: getsUSART((char *) recvBuff, 6);
+"52
+[e ( _getsUSART (2 , &U _recvBuff -> -> 6 `i `uc ]
+[; ;interrupts.c: 53: if(recvBuff[0] == 0x4E && recvBuff[1] == 0x4E && recvBuff[2] == 0x4E)
+"53
+[e $ ! && && == -> *U + &U _recvBuff * -> -> -> 0 `i `ui `ux -> -> # *U &U _recvBuff `ui `ux `i -> 78 `i == -> *U + &U _recvBuff * -> -> -> 1 `i `ui `ux -> -> # *U &U _recvBuff `ui `ux `i -> 78 `i == -> *U + &U _recvBuff * -> -> -> 2 `i `ui `ux -> -> # *U &U _recvBuff `ui `ux `i -> 78 `i 361  ]
+[; ;interrupts.c: 54: {
+"54
+{
+[; ;interrupts.c: 55: pollRecv = 1;
+"55
+[e = _pollRecv -> -> 1 `i `uc ]
+"56
+}
+[e :U 361 ]
+"57
+}
+[e :U 360 ]
+[; ;interrupts.c: 56: }
+[; ;interrupts.c: 57: }
+[; ;interrupts.c: 61: }
+"61
 [e :UE 359 ]
 }
-"75
-[v F3679 `(v ~T0 @X0 1 tf ]
-[v _low_isr `ILF3679 ~T0 @X0 1 e ]
+"73
+[v F3687 `(v ~T0 @X0 1 tf ]
+[v _low_isr `ILF3687 ~T0 @X0 1 e ]
 {
-[; ;interrupts.c: 67: void low_priority interrupt low_isr(void)
-[; ;interrupts.c: 75: {
+[; ;interrupts.c: 65: void low_priority interrupt low_isr(void)
+[; ;interrupts.c: 73: {
 [e :U _low_isr ]
 [f ]
-[; ;interrupts.c: 102: }
-"102
-[e :UE 360 ]
+[; ;interrupts.c: 100: }
+"100
+[e :UE 362 ]
 }

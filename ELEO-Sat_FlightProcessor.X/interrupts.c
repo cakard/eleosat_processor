@@ -47,7 +47,7 @@ void high_isr(void)
       /* TODO Add High Priority interrupt routine code here. */
 
       /* Determine which flag generated the interrupt */
-    if(DataRdyUSART)
+    if(DataRdyUSART())
     {
         getsUSART((char *) recvBuff, 6);
         if(recvBuff[0] == 0x4E && recvBuff[1] == 0x4E && recvBuff[2] == 0x4E)

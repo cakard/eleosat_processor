@@ -1,0 +1,731 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F2620 ]
+"55 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\main.c
+[e E3678 . `uc
+Power 0
+Instrument 1
+Communication 2
+]
+[e E3683 . `uc
+null 0
+switch0_on 1
+switch0_off 2
+switch1_on 3
+switch1_off 4
+switch2_on 5
+switch2_off 6
+switch3_on 7
+switch3_off 8
+]
+"42 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
+[e E3674 . `uc
+Power 0
+Instrument 1
+Communication 2
+]
+[e E3679 . `uc
+null 0
+switch0_on 1
+switch0_off 2
+switch1_on 3
+switch1_off 4
+switch2_on 5
+switch2_off 6
+switch3_on 7
+switch3_off 8
+]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\abdiv.c
+[v ___abdiv __abdiv `(c  1 e 1 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\abmod.c
+[v ___abmod __abmod `(c  1 e 1 0 ]
+"32 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\abtofl.c
+[v ___abtofl __abtofl `(d  1 e 3 0 ]
+"34 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\abtoft.c
+[v ___abtoft __abtoft `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
+"37 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\altofl.c
+[v ___altofl __altofl `(d  1 e 3 0 ]
+"43 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\atdiv.c
+[v ___atdiv __atdiv `(m  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\atmod.c
+[v ___atmod __atmod `(m  1 e 3 0 ]
+"38 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\attofl.c
+[v ___attofl __attofl `(d  1 e 3 0 ]
+"38 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\attoft.c
+[v ___attoft __attoft `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"32 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\awtofl.c
+[v ___awtofl __awtofl `(d  1 e 3 0 ]
+"33 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+"3 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\bmul.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"64 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\double.c
+[v ___flpack __flpack `(d  1 e 3 0 ]
+"89 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\fladd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"50 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\fldiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\flge.c
+[v ___flge __flge `(b  1 e 0 0 ]
+"51 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\flmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"16 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\flneg.c
+[v ___flneg __flneg `(d  1 e 3 0 ]
+"63 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"22 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\flsub.c
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"44 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+"87 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"50 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+"52 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"16 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\ftneg.c
+[v ___ftneg __ftneg `(f  1 e 3 0 ]
+"22 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"45 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+"28 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lbtofl.c
+[v ___lbtofl __lbtofl `(d  1 e 3 0 ]
+"28 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lbtoft.c
+[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"31 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lltofl.c
+[v ___lltofl __lltofl `(d  1 e 3 0 ]
+"36 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lltoft.c
+[v ___lltoft __lltoft `(f  1 e 3 0 ]
+"3 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lmul.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\ltdiv.c
+[v ___ltdiv __ltdiv `(um  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\ltmod.c
+[v ___ltmod __ltmod `(um  1 e 3 0 ]
+"31 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lttofl.c
+[v ___lttofl __lttofl `(d  1 e 3 0 ]
+"31 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lttoft.c
+[v ___lttoft __lttoft `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"29 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lwtofl.c
+[v ___lwtofl __lwtofl `(d  1 e 3 0 ]
+"29 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+"3 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\tmul.c
+[v ___tmul __tmul `(um  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\common\wmul.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\asfladd.c
+[v ___asfladd __asfladd `(d  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\asfldiv.c
+[v ___asfldiv __asfldiv `(d  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\asflmul.c
+[v ___asflmul __asflmul `(d  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\asflsub.c
+[v ___asflsub __asflsub `(d  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\asftadd.c
+[v ___asftadd __asftadd `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\asftdiv.c
+[v ___asftdiv __asftdiv `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\asftmul.c
+[v ___asftmul __asftmul `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\asftsub.c
+[v ___asftsub __asftsub `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\aslmul.c
+[v ___aslmul __aslmul `(ul  1 e 4 0 ]
+"27 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcbusy.c
+[v _BusyADC BusyADC `(uc  1 e 1 0 ]
+"24 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcclose.c
+[v _CloseADC CloseADC `(v  1 e 0 0 ]
+"23 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcconv.c
+[v _ConvertADC ConvertADC `(v  1 e 0 0 ]
+"71 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcopen.c
+[v _OpenADC OpenADC `(v  1 e 0 0 ]
+"25 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcread.c
+[v _ReadADC ReadADC `(i  1 e 2 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_open.c
+[v _OpenSPI OpenSPI `(v  1 e 0 0 ]
+"13 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_read.c
+[v _ReadSPI ReadSPI `(uc  1 e 1 0 ]
+"14 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_writ.c
+[v _WriteSPI WriteSPI `(c  1 e 1 0 ]
+"19 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\Timers\t0open.c
+[v _OpenTimer0 OpenTimer0 `(v  1 e 0 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\ugets.c
+[v _getsUSART getsUSART `(v  1 e 0 0 ]
+"74 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\uopen.c
+[v _OpenUSART OpenUSART `(v  1 e 0 0 ]
+"16 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\uread.c
+[v _ReadUSART ReadUSART `(uc  1 e 1 0 ]
+"38 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\interrupts.c
+[v _high_isr high_isr `II(v  1 e 0 0 ]
+"73
+[v _low_isr low_isr `IIL(v  1 e 0 0 ]
+"38 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\main.c
+[v _main main `(v  1 e 0 0 ]
+"27 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
+[v _setupSPI setupSPI `(v  1 e 0 0 ]
+"42
+[v _sendSPI sendSPI `(v  1 e 0 0 ]
+"69
+[v _recvSPI recvSPI `(uc  1 e 1 0 ]
+"25 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\system.c
+[v _ConfigureOscillator ConfigureOscillator `(v  1 e 0 0 ]
+"31 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\user.c
+[v _InitApp InitApp `(v  1 e 0 0 ]
+"24 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\xbee.c
+[v _initXbee initXbee `(v  1 e 0 0 ]
+"182 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
+[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
+[s S121 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"223
+[s S130 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 INT1 1 0 :1:1 
+`uc 1 INT2 1 0 :1:2 
+`uc 1 CCP2 1 0 :1:3 
+`uc 1 KBI0 1 0 :1:4 
+`uc 1 KBI1 1 0 :1:5 
+`uc 1 KBI2 1 0 :1:6 
+`uc 1 KBI3 1 0 :1:7 
+]
+[s S139 . 1 `uc 1 AN12 1 0 :1:0 
+`uc 1 AN10 1 0 :1:1 
+`uc 1 AN8 1 0 :1:2 
+`uc 1 AN9 1 0 :1:3 
+`uc 1 AN11 1 0 :1:4 
+`uc 1 PGM 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S148 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S151 . 1 `S121 1 . 1 0 `S130 1 . 1 0 `S139 1 . 1 0 `S148 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES151  1 e 1 @3969 ]
+"1194
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"1415
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S21 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+]
+"2018
+[s S29 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RC1IF 1 0 :1:5 
+]
+[s S32 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TX1IF 1 0 :1:4 
+]
+[u S35 . 1 `S21 1 . 1 0 `S29 1 . 1 0 `S32 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES35  1 e 1 @3998 ]
+"2091
+[v _IPR1bits IPR1bits `VES35  1 e 1 @3999 ]
+"3874
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"4165
+[v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
+"4479
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+[s S268 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+]
+"4835
+[s S270 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
+]
+[s S273 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
+]
+[s S276 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
+]
+[s S279 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
+]
+[s S282 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SBOREN 1 0 :1:6 
+`uc 1 IPEN 1 0 :1:7 
+]
+[s S291 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
+]
+[u S297 . 1 `S268 1 . 1 0 `S270 1 . 1 0 `S273 1 . 1 0 `S276 1 . 1 0 `S279 1 . 1 0 `S282 1 . 1 0 `S291 1 . 1 0 ]
+[v _RCONbits RCONbits `VES297  1 e 1 @4048 ]
+[s S335 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"5841
+[s S344 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S353 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[s S362 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S371 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S375 . 1 `S335 1 . 1 0 `S344 1 . 1 0 `S353 1 . 1 0 `S362 1 . 1 0 `S371 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES375  1 e 1 @4082 ]
+[s S1107 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1226 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f2620.h
+[s S1116 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S1125 . 1 `S1107 1 . 1 0 `S1116 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES1125  1 e 1 @3986 ]
+"1668
+[v _TRISCbits TRISCbits `VES1125  1 e 1 @3988 ]
+"1945
+[v _PIE1bits PIE1bits `VES35  1 e 1 @3997 ]
+"2424
+[v _RCSTA RCSTA `VEuc  1 e 1 @4011 ]
+[s S1494 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"2465
+[s S1503 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S1506 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[s S1509 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S1512 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S1515 . 1 `uc 1 RCD8 1 0 :1:0 
+]
+[u S1517 . 1 `S1494 1 . 1 0 `S1503 1 . 1 0 `S1506 1 . 1 0 `S1509 1 . 1 0 `S1512 1 . 1 0 `S1515 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES1517  1 e 1 @4011 ]
+"2633
+[v _TXSTA TXSTA `VEuc  1 e 1 @4012 ]
+[s S1407 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"2693
+[s S1416 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 BRGH1 1 0 :1:2 
+]
+[s S1419 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S1422 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SENDB1 1 0 :1:3 
+]
+[s S1425 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 SYNC1 1 0 :1:4 
+]
+[s S1428 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+]
+[s S1431 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX91 1 0 :1:6 
+]
+[s S1434 . 1 `uc 1 TX9D1 1 0 :1:0 
+]
+[s S1436 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 TXEN1 1 0 :1:5 
+]
+[s S1439 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[s S1442 . 1 `uc 1 TXD8 1 0 :1:0 
+]
+[u S1444 . 1 `S1407 1 . 1 0 `S1416 1 . 1 0 `S1419 1 . 1 0 `S1422 1 . 1 0 `S1425 1 . 1 0 `S1428 1 . 1 0 `S1431 1 . 1 0 `S1434 1 . 1 0 `S1436 1 . 1 0 `S1439 1 . 1 0 `S1442 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES1444  1 e 1 @4012 ]
+"2941
+[v _RCREG RCREG `VEuc  1 e 1 @4014 ]
+"2952
+[v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
+"2963
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @4016 ]
+"3804
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
+"3964
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+[s S568 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"4012
+[s S571 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S578 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S585 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S588 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S591 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S594 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[s S597 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S600 . 1 `S568 1 . 1 0 `S571 1 . 1 0 `S568 1 . 1 0 `S578 1 . 1 0 `S585 1 . 1 0 `S588 1 . 1 0 `S591 1 . 1 0 `S594 1 . 1 0 `S597 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES600  1 e 1 @4034 ]
+"4092
+[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
+"4098
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+[s S1081 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"4185
+[s S1087 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S1092 . 1 `S1081 1 . 1 0 `S1087 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES1092  1 e 1 @4038 ]
+"4234
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
+[s S921 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_NOT_W 1 0 :1:2 
+]
+"4329
+[s S924 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_NOT_A 1 0 :1:5 
+]
+[s S927 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S942 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S947 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 A 1 0 :1:5 
+]
+[s S952 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S957 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S962 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_WRITE 1 0 :1:2 
+]
+[s S965 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_ADDRESS 1 0 :1:5 
+]
+[s S968 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S973 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 DA 1 0 :1:5 
+]
+[s S976 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW 1 0 :1:2 
+]
+[s S979 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 START 1 0 :1:3 
+]
+[s S982 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 STOP 1 0 :1:4 
+]
+[s S985 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_W 1 0 :1:2 
+]
+[s S988 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_A 1 0 :1:5 
+]
+[u S991 . 1 `S921 1 . 1 0 `S924 1 . 1 0 `S927 1 . 1 0 `S921 1 . 1 0 `S924 1 . 1 0 `S942 1 . 1 0 `S947 1 . 1 0 `S952 1 . 1 0 `S957 1 . 1 0 `S962 1 . 1 0 `S965 1 . 1 0 `S968 1 . 1 0 `S973 1 . 1 0 `S976 1 . 1 0 `S979 1 . 1 0 `S982 1 . 1 0 `S985 1 . 1 0 `S988 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES991  1 e 1 @4039 ]
+"5296
+[v _T0CON T0CON `VEuc  1 e 1 @4053 ]
+[s S1331 . 1 `uc 1 T0PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 T08BIT 1 0 :1:6 
+`uc 1 TMR0ON 1 0 :1:7 
+]
+"5318
+[s S1338 . 1 `uc 1 T0PS0 1 0 :1:0 
+`uc 1 T0PS1 1 0 :1:1 
+`uc 1 T0PS2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 T016BIT 1 0 :1:6 
+]
+[u S1344 . 1 `S1331 1 . 1 0 `S1338 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES1344  1 e 1 @4053 ]
+"5378
+[v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
+"5384
+[v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
+[s S1631 . 1 `uc 1 RX_NINE 1 0 :1:0 
+`uc 1 TX_NINE 1 0 :1:1 
+`uc 1 FRAME_ERROR 1 0 :1:2 
+`uc 1 OVERRUN_ERROR 1 0 :1:3 
+`uc 1 fill 1 0 :4:4 
+]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\udefs.c
+[u S1637 USART 1 `uc 1 val 1 0 `S1631 1 . 1 0 ]
+[v _USART_Status USART_Status `S1637  1 e 1 0 ]
+"11 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\xbee.h
+[v _recvBuff recvBuff `[6]uc  1 e 6 0 ]
+"12
+[v _recvIdx recvIdx `uc  1 e 1 0 ]
+"13
+[v _sendBuff sendBuff `[41]uc  1 e 41 0 ]
+"14
+[v _sendIdx sendIdx `uc  1 e 1 0 ]
+"15
+[v _pollRecv pollRecv `uc  1 e 1 0 ]
+"38 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\main.c
+[v _main main `(v  1 e 0 0 ]
+{
+"60
+[v main@aval aval `ui  1 a 2 50 ]
+"110
+} 0
+"69 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
+[v _recvSPI recvSPI `(uc  1 e 1 0 ]
+{
+[v recvSPI@slave slave `E3674  1 p 1 40 ]
+"76
+} 0
+"13 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_read.c
+[v _ReadSPI ReadSPI `(uc  1 e 1 0 ]
+{
+"14
+[v ReadSPI@TempVar TempVar `uc  1 a 1 39 ]
+"21
+} 0
+"25 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcread.c
+[v _ReadADC ReadADC `(i  1 e 2 0 ]
+{
+"27
+} 0
+"27 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcbusy.c
+[v _BusyADC BusyADC `(uc  1 e 1 0 ]
+{
+"29
+} 0
+"23 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcconv.c
+[v _ConvertADC ConvertADC `(v  1 e 0 0 ]
+{
+"25
+} 0
+"42 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
+[v _sendSPI sendSPI `(v  1 e 0 0 ]
+{
+"43
+[v sendSPI@retval retval `uc  1 a 1 44 ]
+"42
+[v sendSPI@slave slave `E3674  1 p 1 41 ]
+[v sendSPI@command command `E3679  1 p 1 42 ]
+"66
+} 0
+"14 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_writ.c
+[v _WriteSPI WriteSPI `(c  1 e 1 0 ]
+{
+"15
+[v WriteSPI@TempVar TempVar `uc  1 a 1 40 ]
+"14
+[v WriteSPI@data_out data_out `uc  1 p 1 39 ]
+"26
+} 0
+"31 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\user.c
+[v _InitApp InitApp `(v  1 e 0 0 ]
+{
+"62
+} 0
+"19 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\Timers\t0open.c
+[v _OpenTimer0 OpenTimer0 `(v  1 e 0 0 ]
+{
+[v OpenTimer0@config config `uc  1 p 1 39 ]
+"31
+} 0
+"27 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\spi_comm.c
+[v _setupSPI setupSPI `(v  1 e 0 0 ]
+{
+"31
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\SPI\spi_open.c
+[v _OpenSPI OpenSPI `(v  1 e 0 0 ]
+{
+[v OpenSPI@sync_mode sync_mode `uc  1 p 1 39 ]
+[v OpenSPI@bus_mode bus_mode `uc  1 p 1 40 ]
+[v OpenSPI@smp_phase smp_phase `uc  1 p 1 41 ]
+"102
+} 0
+"71 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcopen.c
+[v _OpenADC OpenADC `(v  1 e 0 0 ]
+{
+[v OpenADC@config config `uc  1 p 1 39 ]
+[v OpenADC@config2 config2 `uc  1 p 1 40 ]
+[v OpenADC@portconfig portconfig `uc  1 p 1 41 ]
+"89
+} 0
+"24 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\ADC\adcclose.c
+[v _CloseADC CloseADC `(v  1 e 0 0 ]
+{
+"27
+} 0
+"25 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\system.c
+[v _ConfigureOscillator ConfigureOscillator `(v  1 e 0 0 ]
+{
+"33
+} 0
+"73 Z:\ELEO 2013-2014\003_ Senior Capstone Fall 2013\Colin Akard\code repository\eleosat_processor\ELEO-Sat_FlightProcessor.X\interrupts.c
+[v _low_isr low_isr `IIL(v  1 e 0 0 ]
+{
+"100
+} 0
+"38
+[v _high_isr high_isr `II(v  1 e 0 0 ]
+{
+"61
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\ugets.c
+[v _getsUSART getsUSART `(v  1 e 0 0 ]
+{
+"16
+[v getsUSART@i i `uc  1 a 1 23 ]
+"17
+[v getsUSART@data data `uc  1 a 1 22 ]
+"15
+[v getsUSART@buffer buffer `*.39uc  1 p 2 18 ]
+[v getsUSART@len len `uc  1 p 1 20 ]
+"28
+} 0
+"16 C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\plib\USART\uread.c
+[v _ReadUSART ReadUSART `(uc  1 e 1 0 ]
+{
+"17
+[v ReadUSART@data data `uc  1 a 1 17 ]
+"37
+} 0

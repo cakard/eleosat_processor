@@ -28,7 +28,7 @@
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
 #define _XTAL_FREQ 20000000
-/* i.e. uint8_t <variable_name>; */
+unsigned int TemperatureReading;
 
 /******************************************************************************/
 /* Main Program                                                               */
@@ -43,30 +43,74 @@ void main(void)
     InitApp();
 
     /* TODO <INSERT USER APPLICATION CODE HERE> */
-    /*PORTBbits.RB0 = 0;
-    while(WriteSPI(101));
-    PORTBbits.RB0 = 1;
 
-    __delay_us(200);*/
 
     while(1)
     {
 
-
-        //ConvertADC();
-        //while(BusyADC());
-
-        //unsigned char aval = (ReadADC() >> 2);
-
-        //while(WriteSPI(aval));
-
+        // check to see if we were polled and send the data
         if(pollRecv)
         {
-            putsUSART((char *)sendBuff);
-            pollRecv = 0;
+            //putsUSART((char *)sendBuff); // send data
+            sendXbee();
+            for(int i=0; i<6; i++) // clear receive buffer
+                recvBuff[i] = 0;
+            pollRecv = 0; // reset poll received flag
+            PORTBbits.RB2 ^= 1;
         }
 
-    }
+        else if(INTCONbits.TMR0IF)
+        {
+            // read Temperature
+            ConvertADC();
+            while(BusyADC());
+            TemperatureReading = ReadADC();
 
+            sendBuff[4] = 0x03 & (TemperatureReading >> 8);
+            sendBuff[5] = 0xff & TemperatureReading;
+
+//            if(TemperatureReading > 512)
+//                PORTBbits.RB1 = 1;
+//            else
+//                PORTBbits.RB1 = 0;
+
+            // get current through resistor from power pic
+            sendSPI(Power, R_Current);
+            __delay_us(50);
+            sendBuff[6] = recvSPI(Power);
+            sendBuff[7] = recvSPI(Power);
+            __delay_ms(1);
+
+            // get solar current from power pic
+            sendSPI(Power, Solar_Current);
+            __delay_us(50);
+            sendBuff[8] = recvSPI(Power);
+            sendBuff[9] = recvSPI(Power);
+            __delay_ms(1);
+
+            // get solar voltage from power pic
+            sendSPI(Power, Solar_Voltage);
+            __delay_us(50);
+            sendBuff[10] = recvSPI(Power);
+            sendBuff[11] = recvSPI(Power);
+            __delay_ms(1);
+
+            // get temperature from power pic
+            sendSPI(Power, Temperature);
+            __delay_us(50);
+            sendBuff[12] = recvSPI(Power);
+            sendBuff[13] = recvSPI(Power);
+            __delay_ms(1);
+
+            // get temperature from power pic
+            sendSPI(Power, Processor_Voltage);
+            __delay_us(50);
+            sendBuff[14] = recvSPI(Power);
+            sendBuff[15] = recvSPI(Power);
+
+            INTCONbits.TMR0IF = 0;
+            WriteTimer0(0x0000);
+        }
+    }
 }
 

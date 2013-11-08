@@ -4,7 +4,7 @@
 
 #if defined(__XC)
     #include <xc.h>         /* XC8 General Include File */
-    #include "plib.h"       /* XC8 Peripheral Libraries */
+    #include <plib.h>       /* XC8 Peripheral Libraries */
 #elif defined(HI_TECH_C)
     #include <htc.h>        /* HiTech General Include File */
 #elif defined(__18CXX)
@@ -20,6 +20,7 @@
 
 #include "user.h"
 #include "spi_comm.h"
+#include "xbee.h"
 
 /******************************************************************************/
 /* User Functions                                                             */
@@ -47,12 +48,17 @@ void InitApp(void)
     setupSPI();
 
     initXbee();
+    
+
+    // Timer0 for getting Power data
+    OpenTimer0(TIMER_INT_OFF & T0_8BIT & T0_SOURCE_INT & T0_PS_1_256);
+    WriteTimer0(0x0000);
+
 
     /* Configure the IPEN bit (1=on) in RCON to turn on/off int priorities */
-
+    RCONbits.IPEN = 1;
     /* Enable interrupts */
-    //di(); // disable interrupts
-    //RCONbits.IPEN = 0; // disable priority interrupts
+    ei(); // enable interrupts
 
 
 }

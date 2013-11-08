@@ -4568,7 +4568,12 @@ switch1_off = 0x04,
 switch2_on = 0x05,
 switch2_off = 0x06,
 switch3_on = 0x07,
-switch3_off = 0x08
+switch3_off = 0x08,
+R_Current = 0x09,
+Solar_Current = 0x0a,
+Solar_Voltage = 0x0b,
+Temperature = 0x0c,
+Processor_Voltage = 0x0d
 } Commands;
 
 void setupSPI();
@@ -4586,8 +4591,6 @@ OpenSPI(0b00000000 & 0b00000101, 0b00000001, 0b00000000);
 # 41
 void sendSPI(Slaves slave, Commands command)
 {
-char retval = 0x00;
-
 switch(slave)
 {
 case Power:
@@ -4596,7 +4599,23 @@ case Power:
 (PORTBbits.RB0 = 0);
 while(WriteSPI(command));
 
-# 57
+# 55
+(PORTBbits.RB0 = 1);
+break;
+case Instrument:
+break;
+case Communication:
+break;
+}
+}
+
+char recvSPI(Slaves slave)
+{
+switch(slave)
+{
+case Power:
+(PORTBbits.RB0 = 0);
+ReadSPI();
 (PORTBbits.RB0 = 1);
 break;
 case Instrument:
@@ -4605,15 +4624,6 @@ case Communication:
 break;
 }
 
-
-}
-
-char recvSPI(Slaves slave)
-{
-(PORTBbits.RB0 = 0);
-
-
-ReadSPI();
-(PORTBbits.RB0 = 1);
+# 83
 return SSPBUF;
 }
