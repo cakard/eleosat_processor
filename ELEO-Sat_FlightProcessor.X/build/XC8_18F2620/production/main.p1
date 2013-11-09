@@ -43,24 +43,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S313 . . . . . . ]
 "5841
 [v _INTCONbits `VS313 ~T0 @X0 0 e@4082 ]
-"2016 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\adc.h
-[v _ConvertADC `(v ~T0 @X0 0 ef ]
-"2014
-[v _BusyADC `(uc ~T0 @X0 0 ef ]
-"2026
-[v _ReadADC `(i ~T0 @X0 0 ef ]
-"78 main.c
-[c E3678 0 1 2 .. ]
-[n E3678 . Power Instrument Communication  ]
-[c E3683 0 1 2 3 4 5 6 7 8 9 10 11 12 13 .. ]
-[n E3683 . null switch0_on switch0_off switch1_on switch1_off switch2_on switch2_off switch3_on switch3_off R_Current Solar_Current Solar_Voltage Temperature Processor_Voltage  ]
+"16 user.h
+[v _readTemperature `(v ~T0 @X0 0 ef1`uc ]
+"71 main.c
+[c E3682 0 1 2 .. ]
+[n E3682 . Power Instrument Communication  ]
+[c E3687 0 1 2 3 4 5 6 7 8 9 10 11 12 13 .. ]
+[n E3687 . null switch0_on switch0_off switch1_on switch1_off switch2_on switch2_off switch3_on switch3_off R_Current Solar_Current Solar_Voltage Temperature Processor_Voltage  ]
 "39 spi_comm.h
-[v _sendSPI `(v ~T0 @X0 0 ef2`E3678`E3683 ]
+[v _sendSPI `(v ~T0 @X0 0 ef2`E3682`E3687 ]
 "144 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18.h
 [v __delay `(v ~T0 @X0 0 ef1`ul ]
 [p i __delay ]
 "40 spi_comm.h
-[v _recvSPI `(uc ~T0 @X0 0 ef1`E3678 ]
+[v _recvSPI `(uc ~T0 @X0 0 ef1`E3682 ]
 "121 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\timers.h
 [v _WriteTimer0 `(v ~T0 @X0 0 ef1`ui ]
 [; ;include\pic18f2620.h: 44: extern volatile unsigned char PORTA @ 0xF80;
@@ -3445,6 +3441,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;include\stdbool.h: 12: typedef unsigned char bool;
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;user.h: 14: void InitApp(void);
+[; ;user.h: 15: void selectTemp(char);
+[; ;user.h: 16: void readTemperature(char);
 [; ;spi_comm.h: 15: typedef enum {
 [; ;spi_comm.h: 16: Power,
 [; ;spi_comm.h: 17: Instrument,
@@ -3479,8 +3477,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;xbee.h: 12: char recvIdx = 0;
 "13
-[v _sendBuff `uc ~T0 @X0 -> 41 `i e ]
-[; ;xbee.h: 13: char sendBuff[41];
+[v _sendBuff `uc ~T0 @X0 -> 40 `i e ]
+[; ;xbee.h: 13: char sendBuff[40];
 "14
 [v _sendIdx `uc ~T0 @X0 1 e ]
 [i _sendIdx
@@ -3495,10 +3493,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;xbee.h: 15: char pollRecv = 0;
 [; ;xbee.h: 17: void initXbee();
 [; ;xbee.h: 18: void sendXbee();
-"31 main.c
-[v _TemperatureReading `ui ~T0 @X0 1 e ]
-[; ;main.c: 31: unsigned int TemperatureReading;
-"38
+"38 main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [; ;main.c: 37: void main(void)
@@ -3560,116 +3555,91 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 63: {
 "63
 {
-[; ;main.c: 65: ConvertADC();
+[; ;main.c: 65: readTemperature(1);
 "65
-[e ( _ConvertADC ..  ]
-[; ;main.c: 66: while(BusyADC());
+[e ( _readTemperature (1 -> -> 1 `i `uc ]
+[; ;main.c: 66: readTemperature(2);
 "66
-[e $U 369  ]
-[e :U 370 ]
-[e :U 369 ]
-[e $ != -> ( _BusyADC ..  `i -> -> -> 0 `i `uc `i 370  ]
-[e :U 371 ]
-[; ;main.c: 67: TemperatureReading = ReadADC();
+[e ( _readTemperature (1 -> -> 2 `i `uc ]
+[; ;main.c: 67: readTemperature(3);
 "67
-[e = _TemperatureReading -> ( _ReadADC ..  `ui ]
-[; ;main.c: 69: sendBuff[4] = 0x03 & (TemperatureReading >> 8);
-"69
-[e = *U + &U _sendBuff * -> -> -> 4 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux -> & -> -> 3 `i `ui >> _TemperatureReading -> 8 `i `uc ]
-[; ;main.c: 70: sendBuff[5] = 0xff & TemperatureReading;
-"70
-[e = *U + &U _sendBuff * -> -> -> 5 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux -> & -> -> 255 `i `ui _TemperatureReading `uc ]
-[; ;main.c: 78: sendSPI(Power, R_Current);
-"78
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 9 `E3683 ]
-[; ;main.c: 79: _delay((unsigned long)((50)*(20000000/4000000.0)));
+[e ( _readTemperature (1 -> -> 3 `i `uc ]
+[; ;main.c: 68: readTemperature(4);
+"68
+[e ( _readTemperature (1 -> -> 4 `i `uc ]
+[; ;main.c: 71: sendSPI(Power, R_Current);
+"71
+[e ( _sendSPI (2 , -> . `E3682 0 `E3682 -> . `E3687 9 `E3687 ]
+[; ;main.c: 72: _delay((unsigned long)((100)*(20000000/4000000.0)));
+"72
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 73: sendBuff[12] = recvSPI(Power);
+"73
+[e = *U + &U _sendBuff * -> -> -> 12 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3682 0 `E3682 ]
+[; ;main.c: 74: _delay((unsigned long)((100)*(20000000/4000000.0)));
+"74
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 75: sendBuff[13] = recvSPI(Power);
+"75
+[e = *U + &U _sendBuff * -> -> -> 13 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3682 0 `E3682 ]
+[; ;main.c: 76: _delay((unsigned long)((1)*(20000000/4000.0)));
+"76
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 79: sendSPI(Power, Solar_Current);
 "79
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 80: sendBuff[6] = recvSPI(Power);
+[e ( _sendSPI (2 , -> . `E3682 0 `E3682 -> . `E3687 10 `E3687 ]
+[; ;main.c: 80: _delay((unsigned long)((100)*(20000000/4000000.0)));
 "80
-[e = *U + &U _sendBuff * -> -> -> 6 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 81: sendBuff[7] = recvSPI(Power);
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 81: sendBuff[14] = recvSPI(Power);
 "81
-[e = *U + &U _sendBuff * -> -> -> 7 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 82: _delay((unsigned long)((1)*(20000000/4000.0)));
+[e = *U + &U _sendBuff * -> -> -> 14 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3682 0 `E3682 ]
+[; ;main.c: 82: _delay((unsigned long)((100)*(20000000/4000000.0)));
 "82
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 83: sendBuff[15] = recvSPI(Power);
+"83
+[e = *U + &U _sendBuff * -> -> -> 15 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3682 0 `E3682 ]
+[; ;main.c: 84: _delay((unsigned long)((1)*(20000000/4000.0)));
+"84
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 85: sendSPI(Power, Solar_Current);
-"85
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 10 `E3683 ]
-[; ;main.c: 86: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"86
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 87: sendBuff[8] = recvSPI(Power);
+[; ;main.c: 87: sendSPI(Power, Solar_Voltage);
 "87
-[e = *U + &U _sendBuff * -> -> -> 8 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 88: sendBuff[9] = recvSPI(Power);
+[e ( _sendSPI (2 , -> . `E3682 0 `E3682 -> . `E3687 11 `E3687 ]
+[; ;main.c: 88: _delay((unsigned long)((100)*(20000000/4000000.0)));
 "88
-[e = *U + &U _sendBuff * -> -> -> 9 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 89: _delay((unsigned long)((1)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 89: sendBuff[16] = recvSPI(Power);
 "89
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 92: sendSPI(Power, Solar_Voltage);
+[e = *U + &U _sendBuff * -> -> -> 16 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3682 0 `E3682 ]
+[; ;main.c: 90: _delay((unsigned long)((100)*(20000000/4000000.0)));
+"90
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 91: sendBuff[17] = recvSPI(Power);
+"91
+[e = *U + &U _sendBuff * -> -> -> 17 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3682 0 `E3682 ]
+[; ;main.c: 92: _delay((unsigned long)((1)*(20000000/4000.0)));
 "92
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 11 `E3683 ]
-[; ;main.c: 93: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"93
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 94: sendBuff[10] = recvSPI(Power);
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 94: INTCONbits.TMR0IF = 0;
 "94
-[e = *U + &U _sendBuff * -> -> -> 10 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 95: sendBuff[11] = recvSPI(Power);
-"95
-[e = *U + &U _sendBuff * -> -> -> 11 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 96: _delay((unsigned long)((1)*(20000000/4000.0)));
-"96
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 99: sendSPI(Power, Temperature);
-"99
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 12 `E3683 ]
-[; ;main.c: 100: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"100
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 101: sendBuff[12] = recvSPI(Power);
-"101
-[e = *U + &U _sendBuff * -> -> -> 12 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 102: sendBuff[13] = recvSPI(Power);
-"102
-[e = *U + &U _sendBuff * -> -> -> 13 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 103: _delay((unsigned long)((1)*(20000000/4000.0)));
-"103
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 106: sendSPI(Power, Processor_Voltage);
-"106
-[e ( _sendSPI (2 , -> . `E3678 0 `E3678 -> . `E3683 13 `E3683 ]
-[; ;main.c: 107: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"107
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 108: sendBuff[14] = recvSPI(Power);
-"108
-[e = *U + &U _sendBuff * -> -> -> 14 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 109: sendBuff[15] = recvSPI(Power);
-"109
-[e = *U + &U _sendBuff * -> -> -> 15 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux ( _recvSPI (1 -> . `E3678 0 `E3678 ]
-[; ;main.c: 111: INTCONbits.TMR0IF = 0;
-"111
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 112: WriteTimer0(0x0000);
-"112
+[; ;main.c: 95: WriteTimer0(0x0000);
+"95
 [e ( _WriteTimer0 (1 -> -> 0 `i `ui ]
-"113
+"96
 }
 [e :U 368 ]
-"114
+"97
 [e :U 367 ]
 }
 [e :U 360 ]
 "48
 [e $U 361  ]
 [e :U 362 ]
-[; ;main.c: 113: }
-[; ;main.c: 114: }
-[; ;main.c: 115: }
-"115
+[; ;main.c: 96: }
+[; ;main.c: 97: }
+[; ;main.c: 98: }
+"98
 [e :UE 359 ]
 }

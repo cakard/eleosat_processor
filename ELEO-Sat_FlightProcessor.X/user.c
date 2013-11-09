@@ -51,7 +51,7 @@ void InitApp(void)
     
 
     // Timer0 for getting Power data
-    OpenTimer0(TIMER_INT_OFF & T0_8BIT & T0_SOURCE_INT & T0_PS_1_256);
+    OpenTimer0(TIMER_INT_OFF & T0_16BIT & T0_SOURCE_INT & T0_PS_1_128);
     WriteTimer0(0x0000);
 
 
@@ -61,4 +61,54 @@ void InitApp(void)
     ei(); // enable interrupts
 
 
+}
+
+void selectTemp(char sel)
+{
+    switch(sel)
+    {
+        case 1:
+            PORTBbits.RB1 = 0;
+            PORTBbits.RB2 = 0;
+            break;
+        case 2:
+            PORTBbits.RB1 = 1;
+            PORTBbits.RB2 = 0;
+            break;
+        case 3:
+            PORTBbits.RB1 = 0;
+            PORTBbits.RB2 = 1;
+            break;
+        case 4:
+            PORTBbits.RB1 = 1;
+            PORTBbits.RB2 = 1;
+            break;
+    }
+}
+
+void readTemperature(char sel)
+{
+    selectTemp(1);
+    ConvertADC();
+    while(BusyADC());
+    int TemperatureReading = ReadADC();
+    switch(sel)
+    {
+        case 1:
+            sendBuff[4] = 0x03 & (TemperatureReading >> 8);
+            sendBuff[5] = 0xff & TemperatureReading;
+            break;
+        case 2:
+            sendBuff[6] = 0x03 & (TemperatureReading >> 8);
+            sendBuff[7] = 0xff & TemperatureReading;
+            break;
+        case 3:
+            sendBuff[8] = 0x03 & (TemperatureReading >> 8);
+            sendBuff[9] = 0xff & TemperatureReading;
+            break;
+        case 4:
+            sendBuff[10] = 0x03 & (TemperatureReading >> 8);
+            sendBuff[11] = 0xff & TemperatureReading;
+            break;
+    }
 }

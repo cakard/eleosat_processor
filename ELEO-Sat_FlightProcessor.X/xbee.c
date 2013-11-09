@@ -25,7 +25,7 @@ void initXbee()
     IPR1bits.RCIP = 1; // set Rx interrupt to high priority
     for(int i=0; i<6; i++)
         recvBuff[i] = 0;
-    for(int i=0; i<41; i++)
+    for(int i=0; i<40; i++)
         sendBuff[i] = 0;
 
     sendBuff[0] = 0x4E;

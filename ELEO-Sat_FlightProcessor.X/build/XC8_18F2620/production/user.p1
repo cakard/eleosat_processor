@@ -82,6 +82,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S313 . . . . . . ]
 "5841
 [v _INTCONbits `VS313 ~T0 @X0 0 e@4082 ]
+"2016 C:/Program Files (x86)/Microchip/xc8/v1.21/include/plib\adc.h
+[v _ConvertADC `(v ~T0 @X0 0 ef ]
+"2014
+[v _BusyADC `(uc ~T0 @X0 0 ef ]
+"2026
+[v _ReadADC `(i ~T0 @X0 0 ef ]
 [; ;include\pic18f2620.h: 44: extern volatile unsigned char PORTA @ 0xF80;
 "46 C:/Program Files (x86)/Microchip/xc8/v1.21/include\pic18f2620.h
 [; ;include\pic18f2620.h: 46: asm("PORTA equ 0F80h");
@@ -3463,6 +3469,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;include\stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;include\stdbool.h: 12: typedef unsigned char bool;
 [; ;user.h: 14: void InitApp(void);
+[; ;user.h: 15: void selectTemp(char);
+[; ;user.h: 16: void readTemperature(char);
 [; ;spi_comm.h: 15: typedef enum {
 [; ;spi_comm.h: 16: Power,
 [; ;spi_comm.h: 17: Instrument,
@@ -3497,8 +3505,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;xbee.h: 12: char recvIdx = 0;
 "13
-[v _sendBuff `uc ~T0 @X0 -> 41 `i e ]
-[; ;xbee.h: 13: char sendBuff[41];
+[v _sendBuff `uc ~T0 @X0 -> 40 `i e ]
+[; ;xbee.h: 13: char sendBuff[40];
 "14
 [v _sendIdx `uc ~T0 @X0 1 e ]
 [i _sendIdx
@@ -3549,9 +3557,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 50: initXbee();
 "50
 [e ( _initXbee ..  ]
-[; ;user.c: 54: OpenTimer0(0b01111111 & 0b11111111 & 0b11011111 & 0b11110111);
+[; ;user.c: 54: OpenTimer0(0b01111111 & 0b10111111 & 0b11011111 & 0b11110110);
 "54
-[e ( _OpenTimer0 (1 -> & & & -> 127 `i -> 255 `i -> 223 `i -> 247 `i `uc ]
+[e ( _OpenTimer0 (1 -> & & & -> 127 `i -> 191 `i -> 223 `i -> 246 `i `uc ]
 [; ;user.c: 55: WriteTimer0(0x0000);
 "55
 [e ( _WriteTimer0 (1 -> -> 0 `i `ui ]
@@ -3564,4 +3572,179 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 64: }
 "64
 [e :UE 359 ]
+}
+"67
+[v _selectTemp `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;user.c: 66: void selectTemp(char sel)
+[; ;user.c: 67: {
+[e :U _selectTemp ]
+[v _sel `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;user.c: 68: switch(sel)
+"68
+[e $U 362  ]
+[; ;user.c: 69: {
+"69
+{
+[; ;user.c: 70: case 1:
+"70
+[e :U 363 ]
+[; ;user.c: 71: PORTBbits.RB1 = 0;
+"71
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+[; ;user.c: 72: PORTBbits.RB2 = 0;
+"72
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 73: break;
+"73
+[e $U 361  ]
+[; ;user.c: 74: case 2:
+"74
+[e :U 364 ]
+[; ;user.c: 75: PORTBbits.RB1 = 1;
+"75
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+[; ;user.c: 76: PORTBbits.RB2 = 0;
+"76
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 77: break;
+"77
+[e $U 361  ]
+[; ;user.c: 78: case 3:
+"78
+[e :U 365 ]
+[; ;user.c: 79: PORTBbits.RB1 = 0;
+"79
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+[; ;user.c: 80: PORTBbits.RB2 = 1;
+"80
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+[; ;user.c: 81: break;
+"81
+[e $U 361  ]
+[; ;user.c: 82: case 4:
+"82
+[e :U 366 ]
+[; ;user.c: 83: PORTBbits.RB1 = 1;
+"83
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+[; ;user.c: 84: PORTBbits.RB2 = 1;
+"84
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+[; ;user.c: 85: break;
+"85
+[e $U 361  ]
+"86
+}
+[; ;user.c: 86: }
+[e $U 361  ]
+"68
+[e :U 362 ]
+[e [\ _sel , $ -> -> 1 `i `uc 363
+ , $ -> -> 2 `i `uc 364
+ , $ -> -> 3 `i `uc 365
+ , $ -> -> 4 `i `uc 366
+ 361 ]
+"86
+[e :U 361 ]
+[; ;user.c: 87: }
+"87
+[e :UE 360 ]
+}
+"90
+[v _readTemperature `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;user.c: 89: void readTemperature(char sel)
+[; ;user.c: 90: {
+[e :U _readTemperature ]
+[v _sel `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;user.c: 91: selectTemp(1);
+"91
+[e ( _selectTemp (1 -> -> 1 `i `uc ]
+[; ;user.c: 92: ConvertADC();
+"92
+[e ( _ConvertADC ..  ]
+[; ;user.c: 93: while(BusyADC());
+"93
+[e $U 368  ]
+[e :U 369 ]
+[e :U 368 ]
+[e $ != -> ( _BusyADC ..  `i -> -> -> 0 `i `uc `i 369  ]
+[e :U 370 ]
+"94
+[v _TemperatureReading `i ~T0 @X0 1 a ]
+[; ;user.c: 94: int TemperatureReading = ReadADC();
+[e = _TemperatureReading ( _ReadADC ..  ]
+[; ;user.c: 95: switch(sel)
+"95
+[e $U 372  ]
+[; ;user.c: 96: {
+"96
+{
+[; ;user.c: 97: case 1:
+"97
+[e :U 373 ]
+[; ;user.c: 98: sendBuff[4] = 0x03 & (TemperatureReading >> 8);
+"98
+[e = *U + &U _sendBuff * -> -> -> 4 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux -> & -> 3 `i >> _TemperatureReading -> 8 `i `uc ]
+[; ;user.c: 99: sendBuff[5] = 0xff & TemperatureReading;
+"99
+[e = *U + &U _sendBuff * -> -> -> 5 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux -> & -> 255 `i _TemperatureReading `uc ]
+[; ;user.c: 100: break;
+"100
+[e $U 371  ]
+[; ;user.c: 101: case 2:
+"101
+[e :U 374 ]
+[; ;user.c: 102: sendBuff[6] = 0x03 & (TemperatureReading >> 8);
+"102
+[e = *U + &U _sendBuff * -> -> -> 6 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux -> & -> 3 `i >> _TemperatureReading -> 8 `i `uc ]
+[; ;user.c: 103: sendBuff[7] = 0xff & TemperatureReading;
+"103
+[e = *U + &U _sendBuff * -> -> -> 7 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux -> & -> 255 `i _TemperatureReading `uc ]
+[; ;user.c: 104: break;
+"104
+[e $U 371  ]
+[; ;user.c: 105: case 3:
+"105
+[e :U 375 ]
+[; ;user.c: 106: sendBuff[8] = 0x03 & (TemperatureReading >> 8);
+"106
+[e = *U + &U _sendBuff * -> -> -> 8 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux -> & -> 3 `i >> _TemperatureReading -> 8 `i `uc ]
+[; ;user.c: 107: sendBuff[9] = 0xff & TemperatureReading;
+"107
+[e = *U + &U _sendBuff * -> -> -> 9 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux -> & -> 255 `i _TemperatureReading `uc ]
+[; ;user.c: 108: break;
+"108
+[e $U 371  ]
+[; ;user.c: 109: case 4:
+"109
+[e :U 376 ]
+[; ;user.c: 110: sendBuff[10] = 0x03 & (TemperatureReading >> 8);
+"110
+[e = *U + &U _sendBuff * -> -> -> 10 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux -> & -> 3 `i >> _TemperatureReading -> 8 `i `uc ]
+[; ;user.c: 111: sendBuff[11] = 0xff & TemperatureReading;
+"111
+[e = *U + &U _sendBuff * -> -> -> 11 `i `ui `ux -> -> # *U &U _sendBuff `ui `ux -> & -> 255 `i _TemperatureReading `uc ]
+[; ;user.c: 112: break;
+"112
+[e $U 371  ]
+"113
+}
+[; ;user.c: 113: }
+[e $U 371  ]
+"95
+[e :U 372 ]
+[e [\ _sel , $ -> -> 1 `i `uc 373
+ , $ -> -> 2 `i `uc 374
+ , $ -> -> 3 `i `uc 375
+ , $ -> -> 4 `i `uc 376
+ 371 ]
+"113
+[e :U 371 ]
+[; ;user.c: 114: }
+"114
+[e :UE 367 ]
 }

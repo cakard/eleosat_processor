@@ -4554,6 +4554,8 @@ typedef unsigned char bool;
 
 # 14 "user.h"
 void InitApp(void);
+void selectTemp(char);
+void readTemperature(char);
 
 # 15 "spi_comm.h"
 typedef enum {
@@ -4586,7 +4588,7 @@ char recvSPI(Slaves slave);
 # 11 "xbee.h"
 char recvBuff[6];
 char recvIdx = 0;
-char sendBuff[41];
+char sendBuff[40];
 char sendIdx = 0;
 char pollRecv = 0;
 
@@ -4617,7 +4619,7 @@ initXbee();
 
 
 
-OpenTimer0(0b01111111 & 0b11111111 & 0b11011111 & 0b11110111);
+OpenTimer0(0b01111111 & 0b10111111 & 0b11011111 & 0b11110110);
 WriteTimer0(0x0000);
 
 
@@ -4627,4 +4629,54 @@ RCONbits.IPEN = 1;
 (INTCONbits.GIE = 1);
 
 
+}
+
+void selectTemp(char sel)
+{
+switch(sel)
+{
+case 1:
+PORTBbits.RB1 = 0;
+PORTBbits.RB2 = 0;
+break;
+case 2:
+PORTBbits.RB1 = 1;
+PORTBbits.RB2 = 0;
+break;
+case 3:
+PORTBbits.RB1 = 0;
+PORTBbits.RB2 = 1;
+break;
+case 4:
+PORTBbits.RB1 = 1;
+PORTBbits.RB2 = 1;
+break;
+}
+}
+
+void readTemperature(char sel)
+{
+selectTemp(1);
+ConvertADC();
+while(BusyADC());
+int TemperatureReading = ReadADC();
+switch(sel)
+{
+case 1:
+sendBuff[4] = 0x03 & (TemperatureReading >> 8);
+sendBuff[5] = 0xff & TemperatureReading;
+break;
+case 2:
+sendBuff[6] = 0x03 & (TemperatureReading >> 8);
+sendBuff[7] = 0xff & TemperatureReading;
+break;
+case 3:
+sendBuff[8] = 0x03 & (TemperatureReading >> 8);
+sendBuff[9] = 0xff & TemperatureReading;
+break;
+case 4:
+sendBuff[10] = 0x03 & (TemperatureReading >> 8);
+sendBuff[11] = 0xff & TemperatureReading;
+break;
+}
 }

@@ -28,7 +28,7 @@
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
 #define _XTAL_FREQ 20000000
-unsigned int TemperatureReading;
+//unsigned int TemperatureReading;
 
 /******************************************************************************/
 /* Main Program                                                               */
@@ -61,52 +61,35 @@ void main(void)
 
         else if(INTCONbits.TMR0IF)
         {
-            // read Temperature
-            ConvertADC();
-            while(BusyADC());
-            TemperatureReading = ReadADC();
-
-            sendBuff[4] = 0x03 & (TemperatureReading >> 8);
-            sendBuff[5] = 0xff & TemperatureReading;
-
-//            if(TemperatureReading > 512)
-//                PORTBbits.RB1 = 1;
-//            else
-//                PORTBbits.RB1 = 0;
+            // read Temperatures
+            readTemperature(1);
+            readTemperature(2);
+            readTemperature(3);
+            readTemperature(4);
 
             // get current through resistor from power pic
             sendSPI(Power, R_Current);
-            __delay_us(50);
-            sendBuff[6] = recvSPI(Power);
-            sendBuff[7] = recvSPI(Power);
+            __delay_us(100);
+            sendBuff[12] = recvSPI(Power);
+            __delay_us(100);
+            sendBuff[13] = recvSPI(Power);
             __delay_ms(1);
 
             // get solar current from power pic
             sendSPI(Power, Solar_Current);
-            __delay_us(50);
-            sendBuff[8] = recvSPI(Power);
-            sendBuff[9] = recvSPI(Power);
+            __delay_us(100);
+            sendBuff[14] = recvSPI(Power);
+            __delay_us(100);
+            sendBuff[15] = recvSPI(Power);
             __delay_ms(1);
 
             // get solar voltage from power pic
             sendSPI(Power, Solar_Voltage);
-            __delay_us(50);
-            sendBuff[10] = recvSPI(Power);
-            sendBuff[11] = recvSPI(Power);
+            __delay_us(100);
+            sendBuff[16] = recvSPI(Power);
+            __delay_us(100);
+            sendBuff[17] = recvSPI(Power);
             __delay_ms(1);
-
-            // get temperature from power pic
-            sendSPI(Power, Temperature);
-            __delay_us(50);
-            sendBuff[12] = recvSPI(Power);
-            sendBuff[13] = recvSPI(Power);
-            __delay_ms(1);
-
-            // get temperature from power pic
-            sendSPI(Power, Processor_Voltage);
-            __delay_us(50);
-            sendBuff[14] = recvSPI(Power);
-            sendBuff[15] = recvSPI(Power);
 
             INTCONbits.TMR0IF = 0;
             WriteTimer0(0x0000);
